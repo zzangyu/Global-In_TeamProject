@@ -13,10 +13,9 @@
 
 <body>
 <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
-<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
 	<div id="frame">
     	<div id="map"></div>
-	    <div id="user_map"></div>
+        <div id="user_map"></div>
 	    <pre id="info"></pre>
 	</div>
     
