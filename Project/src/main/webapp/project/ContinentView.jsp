@@ -8,7 +8,7 @@
 	String user = "scott";
 	String passwd = "tiger";
 	String url = "jdbc:oracle:thin:@localhost:1521:orcl";
-	String sql = "select cityinfo, info, volt, hour, timedifference from City";
+	String sql = "select * from City";
 %>
 <!DOCTYPE html>
 <html>
@@ -38,7 +38,7 @@
 	<%
 		while(rs.next()){
 	%>
-		<div class="btn-open-popup" onclick=>
+		<div class="btn-open-popup">
 				<img src="./img/01.jpeg" width="300" height="300">
 				<div id="citytext">
 					<div><b><%= rs.getString("cityname") %></b></div>
@@ -84,11 +84,10 @@
 	</div>
 	
 	<script>
-		
-		const body = document.querySelector('body');
+ 		const body = document.querySelector('body');
   		const modal = document.querySelector('.modal');
  	    const OpenPopup = document.querySelector('.btn-open-popup');
-
+			
   		OpenPopup.addEventListener('click', () => {
     	modal.classList.toggle('show');
 
@@ -106,6 +105,6 @@
         	}
       	}
     	});
-    </script>
+	</script>
 </body>
 </html>

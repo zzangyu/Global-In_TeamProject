@@ -9,7 +9,7 @@ volt varchar2(20) not null,
 hour varchar2(20) not null,
 timedifference varchar2(20) not null
 );
-select cityname, cityinfo, info, volt, hour, timedifference from City;
+select * from City where cityname like 'Tokyo';
 drop table City;
 select * from City;
 update City set col = value where col = value;

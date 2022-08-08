@@ -1,3 +1,4 @@
+<%@page import="javax.security.auth.message.callback.PrivateKeyCallback.Request"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="java.sql.*"%>
@@ -9,7 +10,7 @@
 	String user = "scott";
 	String passwd = "tiger";
 	String url = "jdbc:oracle:thin:@localhost:1521:orcl";
-	String sql = "select cityinfo, info, volt, hour, timedifference from City where cityinfo Like %"+word+"%";
+	String sql = "select * from City where cityinfo like '%"+word+"%'";	
 %>
 <!DOCTYPE html>
 <html>
@@ -40,13 +41,12 @@
 	<%
 		while(rs.next()){
 	%>
-		<div class="btn-open-popup" onclick=>
+		<div class="btn-open-popup">
 				<img src="./img/01.jpeg" width="300" height="300">
 				<div id="citytext">
 					<div><b><%= rs.getString("cityname") %></b></div>
 				    <%= rs.getString("cityinfo") %>
 				</div>
-	
 		</div>
 		<div class="modal">	
 			<div id="cityWrap2" class="modal_body">
