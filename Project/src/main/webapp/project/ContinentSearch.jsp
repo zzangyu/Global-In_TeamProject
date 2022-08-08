@@ -1,20 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="java.sql.*"%>
-<%!// 변수 선언
+<%// 변수 선언
+	String word = request.getParameter("userSearch");
 	Connection conn = null;
 	Statement stmt = null;
 	ResultSet rs = null;
 	String user = "scott";
 	String passwd = "tiger";
 	String url = "jdbc:oracle:thin:@localhost:1521:orcl";
-	String sql = "select cityinfo, info, volt, hour, timedifference from City";
+	String sql = "select cityinfo, info, volt, hour, timedifference from City where cityinfo Like %"+word+"%";
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+</head>
 <link href="css/CityInfo.css" rel="stylesheet" type="text/css">
 </head>
 <body>
