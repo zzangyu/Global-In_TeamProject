@@ -1,7 +1,10 @@
 @charset "UTF-8";
 #cityContainer {
 	width: 100%;
-	height: 100%;
+}
+#Search {
+	display: flex;
+	justify-content: center;
 }
 .btn-open-popup {
 	display: inline-block;
