@@ -11,16 +11,24 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+<script src="https://kit.fontawesome.com/e14a2b80fa.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
 	<div id="cityContainer">
 		<div id="Search">
-			<form action="ContinentSearch.jsp" >
-				<label id="userSearch"></label>
-				<input type="text" name="userSearch">
-				<input type="submit" value="Search">
+			<form action="CityInfoSearch.jsp">
+				<div id="submitBtn">
+					<input type="text" name="userSearch" id="userSearch">
+					<button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+				</div>
 			</form>
+				<div class="menu">
+					<button value="All" class="menu-link">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+					<button value="Asia" class="menu-link">&nbsp;&nbsp;&nbsp;Asia&nbsp;&nbsp;&nbsp;</button>
+					<button value="America" class="menu-link">America</button>
+					<button value="Europe" class="menu-link">Europe</button>
+				</div>
 		</div>
 	<jsp:useBean id="dao" class="com.dbcp.DBCP" scope="page" />
 	<%	
@@ -75,12 +83,13 @@
 			PrintWriter writer = response.getWriter();
 			writer.println("<script type='text/javascript'>");
 			writer.println("alert('검색 결과가 없습니다.');");
-			writer.println("location.href='ContinentView.jsp';");
+			writer.println("location.href='CityInfoView.jsp';");
 			writer.println("</script>");
 			writer.flush();
 		}
 		
 	%>
 	</div>
+	<script type="text/javascript" src="js/CityInfo.js"></script>
 </body>
 </html>

@@ -9,6 +9,9 @@ volt varchar2(20) not null,
 hour varchar2(20) not null,
 timedifference varchar2(20) not null
 );
+
+select * from City where continent like '%';
+
 select * from City where cityname like 'Tokyo';
 drop table City;
 select * from City;

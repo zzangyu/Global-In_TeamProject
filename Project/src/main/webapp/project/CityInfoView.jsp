@@ -10,23 +10,31 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+<script src="https://kit.fontawesome.com/e14a2b80fa.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
 	<div id="cityContainer">
 		<div id="Search">
-			<form action="ContinentSearch.jsp" >
-				<label id="userSearch"></label>
-				<input type="text" name="userSearch">
-				<input type="submit" value="Search">
+			<form action="CityInfoSearch.jsp">
+				<div id="submitBtn">
+					<input type="text" name="userSearch" id="userSearch">
+					<button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+				</div>
 			</form>
+				<div class="menu">
+					<button value="All" class="menu-link">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+					<button value="Asia" class="menu-link">&nbsp;&nbsp;&nbsp;Asia&nbsp;&nbsp;&nbsp;</button>
+					<button value="America" class="menu-link">America</button>
+					<button value="Europe" class="menu-link">Europe</button>
+				</div>
 		</div>
 	<jsp:useBean id="dao" class="com.dbcp.DBCP" scope="page" />
 	<%
 		List<CityVO> arry = dao.getCity();
 		for (int i = 0; i < arry.size(); i++) {	
 	%>
-		<div class="btn-open-popup">	
+		<div class="btn-open-popup">
 			<a class="btn" href="#<%= arry.get(i).getCityname() %>">
 				<img src="./img/01.jpeg" width="300" height="300">
 				<div id="citytext">
@@ -48,6 +56,7 @@
 						<div><%= arry.get(i).getHour() %></div>
 						<div><%= arry.get(i).getTimedifference() %></div>
 					</div>
+					<a>일정 만들기</a>
 				</div>
 			</div>
 		</div>                                    
@@ -65,5 +74,6 @@
 		
 	%>
 	</div>
+	<script type="text/javascript" src="js/CityInfo.js"></script>
 </body>
 </html>
