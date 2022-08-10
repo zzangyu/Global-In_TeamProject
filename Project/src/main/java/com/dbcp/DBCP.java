@@ -74,7 +74,7 @@ public class DBCP{
 		
 	}
 	
-	public List<CityVO> getContinent(String value) {
+	public List<CityVO> getContinent() {
 		Connection conn = null;
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
@@ -83,8 +83,8 @@ public class DBCP{
 		
 		try {
 			conn = ds.getConnection();
-			pstm = conn.prepareStatement("select * from City where continent like '?'");
-			pstm.setString(1, "¾Æ½Ã¾Æ(Asia)");
+			pstm = conn.prepareStatement("select * from City where continent like '%?%'");
+			pstm.setString(1, "(");
 			rs = pstm.executeQuery();
 			
 			while(rs.next()) {
