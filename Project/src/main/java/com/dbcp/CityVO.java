@@ -11,6 +11,8 @@ public class CityVO {
 	private String volt = "";
 	private String hour = "";
 	private String timedifference = "";
+	private String btn = "";
+	
 	
 	public String getCityname() {
 		return cityname;
@@ -65,6 +67,12 @@ public class CityVO {
 	}
 	public void setTimedifference(String timedifference) {
 		this.timedifference = timedifference;
+	}
+	public String getBtn() {
+		return btn;
+	}
+	public void setBtn(String btn) {
+		this.btn = btn;
 	}
 	
 }

@@ -18,49 +18,51 @@
 		<div id="Search">
 			<form action="CityInfoSearch.jsp">
 				<div id="submitBtn">
-					<input type="text" name="userSearch" id="userSearch">
+					<input type="text" name="userSearch" id="userSearch" placeholder="나라-도시 검색">
 					<button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
 				</div>
 			</form>
 				<div class="menu">
-					<button value="All" class="menu-link">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-					<button value="Asia" class="menu-link">&nbsp;&nbsp;&nbsp;Asia&nbsp;&nbsp;&nbsp;</button>
-					<button value="America" class="menu-link">America</button>
-					<button value="Europe" class="menu-link">Europe</button>
+					<button class="menu-link" onclick="SearchAll()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+					<button class="menu-link" onclick="SearchAsia()">&nbsp;&nbsp;&nbsp;Asia&nbsp;&nbsp;&nbsp;</button>
+					<button class="menu-link" onclick="SearchAmerica()">America</button>
+					<button class="menu-link" onclick="SearchEurope()">Europe</button>
 				</div>
 		</div>
+
 	<jsp:useBean id="dao" class="com.dbcp.DBCP" scope="page" />
 	<%
 		List<CityVO> arry = dao.getCity();
 		for (int i = 0; i < arry.size(); i++) {	
-	%>
-		<div class="btn-open-popup">
-			<a class="btn" href="#<%= arry.get(i).getCityname() %>">
-				<img src="./img/01.jpeg" width="300" height="300">
-				<div id="citytext">
-					<div><b><%= arry.get(i).getCityname() %></b></div>
-				    <div><%= arry.get(i).getCityinfo() %></div>
-				</div>	
-			
-			</a>
+	%>	
+		<div class="<%= arry.get(i).getBtn()%>">
+			<div class="btn-open-popup">
+				<a class="btn" href="#<%= arry.get(i).getCityname() %>">
+					<img src="./img/<%= arry.get(i).getCityname() %>.jpg" width="300" height="300">
+					<div id="citytext">
+						<div><b><%= arry.get(i).getCityname() %></b></div>
+				   	 <div><%= arry.get(i).getCityinfo() %></div>
+					</div>
+				</a>
+			</div>
 		</div>
-		<div class="modal" id="<%= arry.get(i).getCityname() %>" style="max-width:80%; height:80%;">	
+		<div class="modal" id="<%= arry.get(i).getCityname() %>" style="max-width:90%; height:60%; padding: 0;">	
 			<div id="cityWrap2" class="modal_body">
-				<div id="cityImage2"><img src="./img/01.jpeg"></div>
-				<div>
+				<div id="cityImage2"><img src="./img/<%= arry.get(i).getCityname() %>.jpg"></div>
+				<div id="cityText">
 					<h1><%= arry.get(i).getCityname() %></h1>
-					<div><%= arry.get(i).getCityinfo() %></div>
+					<div><b><%= arry.get(i).getCityinfo() %></b></div>
 					<p><%= arry.get(i).getInfo() %></p>
 					<div id="cityInfo">
-						<div><%= arry.get(i).getVolt() %></div>
-						<div><%= arry.get(i).getHour() %></div>
-						<div><%= arry.get(i).getTimedifference() %></div>
+						<div class="icon"><div><i class="fa-solid fa-bolt"></i></div><div><%= arry.get(i).getVolt() %></div></div>
+						<div class="icon"><div><i class="fa-solid fa-clock-rotate-left"></i></div><div><%= arry.get(i).getHour() %></div></div>
+						<div class="icon"><div><i class="fa-solid fa-plane-departure"></i></div><div><%= arry.get(i).getTimedifference() %></div></div>
 					</div>
-					<a>일정 만들기</a>
+					<div id="plan" onclick="location.href='MyPlan.jsp'">일정 만들기</div>
 				</div>
 			</div>
-		</div>                                    
-	<script>	
+		</div>
+	<script type="text/javascript">	
     	$('a[href="#<%= arry.get(i).getCityname() %>"]').click(function(event) {
       		event.preventDefault();
  
