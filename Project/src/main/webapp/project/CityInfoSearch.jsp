@@ -42,7 +42,7 @@
 	<div class="<%= arry.get(i).getBtn()%>">
 		<div class="btn-open-popup">	
 			<a class="btn" href="#<%= arry.get(i).getCityname() %>">
-				<img src="./img/<%= arry.get(i).getCityname() %>.jpg" width="300" height="300">
+				<div  class="img"><img src="./img/<%= arry.get(i).getCityname() %>.jpg" width="300" height="300"></div>
 				<div id="citytext">
 					<div><b><%= arry.get(i).getCityname() %></b></div>
 				    <div><%= arry.get(i).getCityinfo() %></div>

@@ -63,7 +63,15 @@
 .btn1, .btn2, .btn3 { /* 버튼 클릭하기 전 상태 */
 	display: inline-block;
 }
-
+.img { /* 박스 밖으로 나가는 것을 방지 */
+	overflow: hidden;
+}
+.img img{
+ 	transition: all 0.2s linear;
+}
+.img:hover img {
+ 	transform: scale(1.1);
+}
 /* modal */
 .modal {
 	text-align: left;
@@ -129,4 +137,15 @@
 }
 #plan:hover {
 	cursor: pointer;	
+}
+
+@media screen and (max-width: 1200px) {
+	.modal {
+		width: 60% !important;
+		height: 60% !important;
+	}
+	#cityImage2 img {
+		display: none;
+	}
+	
 }
