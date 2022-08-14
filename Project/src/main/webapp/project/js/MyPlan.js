@@ -1,20 +1,4 @@
-function initMap() {
-  new google.maps.Map(document.getElementById("map"), {
-    mapId: "4d7ece8ee77fe4c0",
-    center: { lat: 48.85, lng: 2.35 },
-    zoom: 5,
-	panControl: false,
-  	zoomControl: false,
-  	mapTypeControl: false,
- 	scaleControl: false,
- 	streetViewControl: false,
- 	overviewMapControl: false
-  });
-}
-
-window.initMap = initMap;
-
-/*JSON*/
+/*JSON 맵 테마*/
 [
   {
     "elementType": "geometry",

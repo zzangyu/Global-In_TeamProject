@@ -65,3 +65,8 @@ input {
   z-index: 1;
   right: 0;
 }
+.placeinfo{
+	width: 200px !important;
+	height: 100px !important; 
+	text-align: center !important;
+}
