@@ -33,8 +33,7 @@
 <!-- google map key, 맵 구현 -->
 <script type="text/javascript">
 function initMap() {
-	const urlParams = new URL(location.href).searchParams; /* url 읽어오기 */
-
+    const urlParams = new URL(location.href).searchParams; /* url 읽어오기 */
 	const latStr = urlParams.get('lat'); /* url에서 lat 파라미터 값 읽기 */
 	const lngStr = urlParams.get('lng'); /* url에서 lon 파라미터 값 읽기 */
 	var lats = parseInt(latStr); /* 문자->인트형으로 형변환 */
@@ -65,7 +64,7 @@ function initMap() {
   						{
   	      					position: new google.maps.LatLng(<%= arry.get(i).getLatitude()%>, <%= arry.get(i).getLongitude()%>), /* 마커 위치 */
   	      					type: "info", /* 마커 아이콘 */
-  	      					place: '<div class="placeinfo"><div class="placeinfo_img"><img src="./img/<%= arry.get(i).getCityname() %>.jpg"></div><div class="placeinfo_info"><div><b><%= arry.get(i).getCityinfo()%></b></div><div onclick="infoGo(<%= arry.get(i).getLatitude()%>,<%= arry.get(i).getLongitude()%>)">지도 보기</div></div></div>'
+  	      					place: '<div class="placeinfo"><div class="placeinfo_img"><img src="./img/<%= arry.get(i).getCityname() %>.jpg"></div><div class="placeinfo_info"><div><b><%= arry.get(i).getCityinfo()%></b></div><div onclick="infoGo('<%= arry.get(i).getCityname()%>')">지도 보기</div></div></div>'
   	    				},  /* 마커를 눌렀을 때 나오는 창 -> html 태그 이용해서 틀 만들기 */
  		<%
   		}

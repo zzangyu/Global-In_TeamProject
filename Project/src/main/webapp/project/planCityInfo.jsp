@@ -12,13 +12,10 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
-<script type="text/javascript" src="js/MyPlan.js"></script>
 <link rel="stylesheet" type="text/css" href="css/planCityInfo.css" />
 <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@700&display=swap" rel="stylesheet"> <!-- 폰트 -->
 </head>
 <body>
-	<%
-	%>
 	<div id="container">
 		<div id="title">이름 가이드북</div>
 		<div id="imgWrap">
@@ -45,5 +42,6 @@
 			<div>추천루트</div>
 		</div>
 	</div>
+	<script type="text/javascript" src="js/MyPlan.js"></script>
 </body>
 </html>
