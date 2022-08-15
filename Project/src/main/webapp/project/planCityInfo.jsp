@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title></title>
+<title>메로옹</title>
 <link rel="stylesheet" type="text/css" href="css/planCityInfo.css" />
 <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@700&display=swap" rel="stylesheet"> <!-- 폰트 -->
 </head>
