@@ -8,6 +8,8 @@
 <title>Insert title here</title>
 <link href="css/CityInfo.css" rel="stylesheet" type="text/css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script type="text/javascript" src="js/CityInfo.js"></script>
+<script type="text/javascript" src="js/MyPlan.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 <script src="https://kit.fontawesome.com/e14a2b80fa.js" crossorigin="anonymous"></script>
@@ -58,7 +60,7 @@
 						<div class="icon"><div><i class="fa-solid fa-clock-rotate-left"></i></div><div><%= arry.get(i).getHour() %></div></div>
 						<div class="icon"><div><i class="fa-solid fa-plane-departure"></i></div><div><%= arry.get(i).getTimedifference() %></div></div>
 					</div>
-					<div id="plan" onclick="location.href='MyPlan.jsp'">일정 만들기</div>
+					<div id="plan" onclick="location.href='MyPlan.jsp?lat=<%= arry.get(i).getLatitude()%>&lng=<%= arry.get(i).getLongitude()%>'">일정 만들기</div>
 				</div>
 			</div>
 		</div>
@@ -76,6 +78,5 @@
 		
 	%>
 	</div>
-	<script type="text/javascript" src="js/CityInfo.js"></script>
 </body>
 </html>
