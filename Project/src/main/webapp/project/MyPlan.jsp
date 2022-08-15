@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script> <!-- 구글맵 스트립트 -->
-<script type="text/javascript" src="js/MyPlan.js"></script>
+
 <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/MyPlan.css" />
 <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@700&display=swap" rel="stylesheet"> <!-- 폰트 -->
@@ -32,6 +32,7 @@
 </form>
 <!-- google map key, 맵 구현 -->
 <script type="text/javascript">
+
 function initMap() {
     const urlParams = new URL(location.href).searchParams; /* url 읽어오기 */
 	const latStr = urlParams.get('lat'); /* url에서 lat 파라미터 값 읽기 */
@@ -56,15 +57,15 @@ function initMap() {
       		icon: "img/dot.png",
     	},
     };
-  		
   	var features = [ /* marker에 대한 정보들 설정 */
 		<%
   		for(int i = 0; i < arry.size(); i++) { /* 마커 전체에 넣어야돼서 for문 이용 */
-  		%>
+		%>
+  		
   						{
   	      					position: new google.maps.LatLng(<%= arry.get(i).getLatitude()%>, <%= arry.get(i).getLongitude()%>), /* 마커 위치 */
   	      					type: "info", /* 마커 아이콘 */
-  	      					place: '<div class="placeinfo"><div class="placeinfo_img"><img src="./img/<%= arry.get(i).getCityname() %>.jpg"></div><div class="placeinfo_info"><div><b><%= arry.get(i).getCityinfo()%></b></div><div onclick="infoGo('<%= arry.get(i).getCityname()%>')">지도 보기</div></div></div>'
+  	      					place: '<div class="placeinfo"><div class="placeinfo_img"><img src="./img/<%= arry.get(i).getCityname() %>.jpg"></div><div class="placeinfo_info"><div><b><%= arry.get(i).getCityinfo()%></b></div><div onclick="infoGo(<%= arry.get(i).getCityname()%>)">지도 보기</div></div></div>'
   	    				},  /* 마커를 눌렀을 때 나오는 창 -> html 태그 이용해서 틀 만들기 */
  		<%
   		}
@@ -104,6 +105,7 @@ function initMap() {
 
 
 </script>
+<script type="text/javascript" src="js/MyPlan.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCY1oDgXTf55jiJBGLsiTsCgf9DyrlU66E&callback=initMap&v=weekly" defer></script>
 </body>
 </html>

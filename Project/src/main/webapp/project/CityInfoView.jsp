@@ -58,7 +58,7 @@
 						<div class="icon"><div><i class="fa-solid fa-clock-rotate-left"></i></div><div><%= arry.get(i).getHour() %></div></div>
 						<div class="icon"><div><i class="fa-solid fa-plane-departure"></i></div><div><%= arry.get(i).getTimedifference() %></div></div>
 					</div>
-					<div id="plan" onclick="location.href='MyPlan.jsp?lat=<%= arry.get(i).getLatitude()%>&lng=<%= arry.get(i).getLongitude()%>&name=<%= arry.get(i).getCityname()%>'">일정 만들기</div>
+					<div id="plan" onclick="location.href='MyPlan.jsp?lat=<%= arry.get(i).getLatitude()%>&lng=<%= arry.get(i).getLongitude()%>'">일정 만들기</div>
 				</div>
 			</div>
 		</div>
