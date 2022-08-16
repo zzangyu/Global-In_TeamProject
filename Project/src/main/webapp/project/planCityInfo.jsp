@@ -16,15 +16,16 @@
 <% /* 왜인지 모르겠는데 name만 전역변수로 선언 해줘야됨.. */
 for(int i = 0; i < arry.size(); i++) {
 %>
-	var <%= arry.get(i).getCitynameimg()%> = "<%= arry.get(i).getCitynameimg()%>";
 nameCheck = function() {
+var <%= arry.get(i).getCitynameimg()%> = "<%= arry.get(i).getCitynameimg()%>";
 const urlParams = new URL(location.href).searchParams;
+const cities = document.getElementsByClassName('container');
 const nameStr = urlParams.get('name');
-
-	if(nameStr === <%= arry.get(i).getCitynameimg()%>){
-		document.getElementById('container').style.display = 'block';
+var number = <%= arry.size()%>;
+	for(var i = 0; i < number; i++) {
+		cities[i].style.display = "none";
 	}
-	
+	document.getElementById(nameStr).style.display = "block";
 }
 <%
 }
@@ -35,7 +36,7 @@ const nameStr = urlParams.get('name');
 	for(int i = 0; i < arry.size(); i++) {	
 	%>
 <body onload="nameCheck()">
-	<div id="container">
+	<div class="container" id="<%= arry.get(i).getCitynameimg() %>">
 		<div id="title"><%= arry.get(i).getCityinfoname() %> - 가이드북</div>
 		<div id="imgWrap">
 			<img src="img/<%= arry.get(i).getCitynameimg() %>.jpg">

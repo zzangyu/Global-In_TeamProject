@@ -4,9 +4,6 @@
 	padding:0;
 }
 /* 전체 크기 800/800 */
-#container {
-	display: none;
-}
 #title {
 	height: 50px;
 	border-bottom: 2px solid #ccc;
