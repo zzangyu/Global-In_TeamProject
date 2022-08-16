@@ -73,7 +73,7 @@ function initMap() {
   						{
   	      					position: new google.maps.LatLng(<%= arry.get(i).getLatitude()%>, <%= arry.get(i).getLongitude()%>), /* 마커 위치 */
   	      					type: "info", /* 마커 아이콘 */
-   	      					place: '<div class="placeinfo"><div class="placeinfo_img"><img src="./img/<%= arry.get(i).getCityname() %>.jpg"></div><div class="placeinfo_info"><div><b><%= arry.get(i).getCityinfo()%></b></div><div onclick="infoGo(<%= arry.get(i).getCityname()%>)">지도 보기</div></div></div>'
+   	      					place: '<div class="placeInfo"><div class="insertPlan">+</div><div class="placeInfo_img"><img src="./img/<%= arry.get(i).getCityname() %>.jpg"></div><div class="placeInfo_info"><b><%= arry.get(i).getCityinfo()%></b></div><div class="guideBook" onclick="infoGo(<%= arry.get(i).getCityname()%>)"><b>가이드북 📘</b></div></div>'
   	    				},  /* 마커를 눌렀을 때 나오는 창 -> html 태그 이용해서 틀 만들기 */
  		<%
   		}

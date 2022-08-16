@@ -50,14 +50,15 @@ public class DBCPPlanCityInfo{
 				vo.setCityinfoname(rs.getString("cityinfoname"));
 				vo.setCitynameimg(rs.getString("citynameimg"));
 				vo.setCityinfoS(rs.getString("cityinfoS"));
-				vo.setCityinfoL(rs.getString("cityinfoL"));
 				vo.setCitypeakseason(rs.getString("citypeakseason"));
 				vo.setCitytwodays1(rs.getString("citytwodays1"));
 				vo.setCitytwodays2(rs.getString("citytwodays2"));
 				vo.setCitythreedays1(rs.getString("citythreedays1"));
 				vo.setCitythreedays2(rs.getString("citythreedays2"));
 				vo.setCitythreedays3(rs.getString("citythreedays3"));
-				vo.setCityroute(rs.getString("cityroute"));
+				vo.setCityroute1(rs.getString("cityroute1"));
+				vo.setCityroute2(rs.getString("cityroute2"));
+				vo.setCityroute3(rs.getString("cityroute3"));
 				arry.add(vo);
 			}
 			

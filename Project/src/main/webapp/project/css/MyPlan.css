@@ -65,19 +65,45 @@ input {
   z-index: 1;
   right: 0;
 }
-.placeinfo{
-	width: 250px;
-	height: 350px; 
-}
-.placeinfo_info div {
+.insertPlan {
+	display: inline-block;
+	position: absolute;
+	top: 23px;
+	left: 235px;
 	font-size: 1.5em;
+	padding-right: 5px;
+	padding-left: 6px;
+	border-radius: 5px;
+	border: 2px solid black;
+	background-color: white;
 }
-.placeinfo_img {
-	width:100%;
+.placeInfo{
+	width: 255px;
+	height: 140px; 
+}
+.placeInfo_info {
+	font-size: 1.3em;
+	display: inline-block;
+	margin-top: 15px;
+	margin-left: 10px;
+}
+.guideBook {
+	display: inline-block;
+	margin-left: 10px;
+	color: #ccc;
+}
+.guideBook:hover {
+	cursor: pointer;
+	color: black;
+}
+.placeInfo_img {
+	width: 250px;
 	height:95px;
+	margin-left: 5px;
+	margin-top: 5px;
 }
-.placeinfo_img img{
+.placeInfo_img img{
 	border-radius:8px;
 	width: 100%;
-	height: 100%;
+	height: 100px;
 }

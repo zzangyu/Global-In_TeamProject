@@ -4,14 +4,15 @@ public class PlanCityInfoVO {
 	private String cityinfoname;
 	private String citynameimg;
 	private String cityinfoS;
-	private String cityinfoL;
 	private String citypeakseason;
 	private String citytwodays1;
 	private String citytwodays2;
 	private String citythreedays1;
 	private String citythreedays2;
 	private String citythreedays3;
-	private String cityroute;
+	private String cityroute1;
+	private String cityroute2;
+	private String cityroute3;
 	
 	public String getCityinfoname() {
 		return cityinfoname;
@@ -30,12 +31,6 @@ public class PlanCityInfoVO {
 	}
 	public void setCityinfoS(String cityinfoS) {
 		this.cityinfoS = cityinfoS;
-	}
-	public String getCityinfoL() {
-		return cityinfoL;
-	}
-	public void setCityinfoL(String cityinfoL) {
-		this.cityinfoL = cityinfoL;
 	}
 	public String getCitypeakseason() {
 		return citypeakseason;
@@ -73,11 +68,23 @@ public class PlanCityInfoVO {
 	public void setCitythreedays3(String citythreedays3) {
 		this.citythreedays3 = citythreedays3;
 	}
-	public String getCityroute() {
-		return cityroute;
+	public String getCityroute1() {
+		return cityroute1;
 	}
-	public void setCityroute(String cityroute) {
-		this.cityroute = cityroute;
+	public void setCityroute1(String cityroute1) {
+		this.cityroute1 = cityroute1;
+	}
+	public String getCityroute2() {
+		return cityroute2;
+	}
+	public void setCityroute2(String cityroute2) {
+		this.cityroute2 = cityroute2;
+	}
+	public String getCityroute3() {
+		return cityroute3;
+	}
+	public void setCityroute3(String cityroute3) {
+		this.cityroute3 = cityroute3;
 	}
 	
 	

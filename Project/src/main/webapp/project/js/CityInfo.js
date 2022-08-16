@@ -20,6 +20,7 @@ function SearchAll() {
 	var asia = document.getElementsByClassName("btn1");
 	var america = document.getElementsByClassName("btn2");
 	var europe = document.getElementsByClassName("btn3");
+	
 	for(var i = 0; i < asia.length; i++) {
    		asia[i].style.display = 'inline-block';
 	}

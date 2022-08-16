@@ -13,7 +13,6 @@
 <script src="https://kit.fontawesome.com/e14a2b80fa.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
 	<div id="cityContainer">
 		<div id="Search">
 			<form action="CityInfoSearch.jsp">
