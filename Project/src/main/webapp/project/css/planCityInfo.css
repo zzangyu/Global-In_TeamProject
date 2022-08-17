@@ -43,7 +43,7 @@ h2 {
 	color: white;
 	transition: 0.1s;
 }
-#wishList {
+.wishList {
     position: absolute;
     left: 720px;
     top: 500px;

@@ -45,7 +45,7 @@ var number = <%= arry.size()%>;
 			<div id="forFlex">
 				<h2><%= arry.get(i).getCityinfoname() %></h2>
 				<div id="cityInfoS"><b><%= arry.get(i).getCityinfoS() %></b></div>
-				<div id="wishList">☆</div>
+				<div class="wishList">☆</div>
 			</div>
 			<div id="infoWrap">
 				<div id="peakMonth">
@@ -75,7 +75,7 @@ var number = <%= arry.size()%>;
 		<%
 	}
 		%>
-	<script type="text/javascript" src="js/MyPlan.js"></script>
 	<script type="text/javascript" src="js/planCityInfo.js"></script>
+	<script type="text/javascript" src="js/MyPlan.js"></script>
 </body>
 </html>
