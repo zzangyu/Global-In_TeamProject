@@ -19,7 +19,7 @@
 <form action="#">
 	<div id="mapWrap">
 		<div id="hello">Let's &nbsp;make &nbsp;a &nbsp;plan</div>
-		<input type="text" name="userSearch" placeholder="도시를 입력해주세요."> <!-- 검색창 -->
+		<input type="text" name="userSearch" placeholder="도시를 입력해주세요." onclick="initMap()"> <!-- 검색창 -->
 		<button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button> <!-- 검색창 버튼 -->
 		<div id="plan"> <!-- 일정 div -->
 			<div id="plan_cities"></div>
@@ -113,19 +113,23 @@ function initMap() {
 
 }
 </script>
+
 <script type="text/javascript">
+	var count = 1;
 	var sendValue = function(name) {
 	<%
 		for(int i = 0; i < arry.size(); i++){
 	%>	
 		if(name === '<%= arry.get(i).getCityname() %>'){
-			document.getElementById("plan_cities").innerHTML += "<div id='planInsert_size'><div id='borderWrap'><div class='border1'></div><div id='border2'>💖</div><div class='border1'></div></div><div id='planInsert'><div><%= arry.get(i).getCityinfo()%></div><div><%= arry.get(i).getCityname()%></div></div></div>";			
+			document.getElementById("plan_cities").innerHTML += "<div id='planInsert_size'><div id='borderWrap'><div class='border1'></div><div id='border2'></div><div class='border1'></div></div><div id='planInsert'><div><%= arry.get(i).getCityname()%></div><div><%= arry.get(i).getCityinfo()%></div><div onclick='deleteList(this)'>X</div></div></div>";			
+			count++;
 		}
 	<%
 		}
 	%>
 	}
 </script>
+
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCY1oDgXTf55jiJBGLsiTsCgf9DyrlU66E&callback=initMap&v=weekly" defer></script>
 </body>
 </html>

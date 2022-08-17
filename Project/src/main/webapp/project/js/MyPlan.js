@@ -10,3 +10,9 @@ var infoGo = function(name) {
 		/*새로 뜨는 창 설정*/ 
     };
 
+
+function deleteList(ths){
+    var ths = $(ths);
+    
+    ths.parents("#planInsert_size").remove();
+}
