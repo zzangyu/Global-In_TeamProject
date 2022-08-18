@@ -15,4 +15,5 @@ function deleteList(ths){
     var ths = $(ths);
     
     ths.parents("#planInsert_size").remove();
+	
 }

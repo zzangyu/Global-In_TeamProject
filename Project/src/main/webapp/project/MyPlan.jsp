@@ -14,13 +14,19 @@
 <link rel="stylesheet" type="text/css" href="css/MyPlan.css" />
 <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@700&display=swap" rel="stylesheet"> <!-- 폰트 -->
 <script src="https://kit.fontawesome.com/e14a2b80fa.js" crossorigin="anonymous"></script> <!-- 폰트어썸 아이콘 -->
+<!-- js -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
 </head>
 <body>
 <form action="saveProc.jsp" method="post" name="saveForm">
 	<div id="mapWrap">
 		<div id="hello">Let's &nbsp;make &nbsp;a &nbsp;plan</div>
 		<input id="input" type="text" name="userSearch" placeholder="도시를 입력해주세요. 엔터x"> <!-- 검색창 -->
-		<button><i class="fa-solid fa-magnifying-glass"></i></button> <!-- 검색창 버튼 -->
+		<button id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></button> <!-- 검색창 버튼 -->
 		<div id="plan"> <!-- 일정 div -->
 			<div id="plan_cities"></div>
 		</div>
@@ -185,19 +191,44 @@ function initMap() {
 }
 </script>
 <script type="text/javascript">
-	var count = 1;
+	var count = 1;	
 	var sendValue = function(name) {
 	<%
 		for(int i = 0; i < arry.size(); i++){
 	%>	
 		if(name === '<%= arry.get(i).getCityname() %>'){
-			document.getElementById("plan_cities").innerHTML += "<input type='hidden' name='cityEn"+count+"' value='<%= arry.get(i).getCityname()%>'><input type='hidden' name='cityKr"+count+"' value='<%= arry.get(i).getCityinfo()%>'><div id='planInsert_size'><div id='borderWrap'><div class='border1'></div><div id='border2'></div><div class='border1'></div></div><div id='planInsert'><div><%= arry.get(i).getCityname()%></div><div><%= arry.get(i).getCityinfo()%></div><div onclick='deleteList(this)'>X</div></div></div>";			
+			document.getElementById("plan_cities").innerHTML += "<div id='planInsert_size'><input type='hidden' name='cityEn"+count+"' value='<%= arry.get(i).getCityname()%>'><input type='hidden' name='cityKr"+count+"' value='<%= arry.get(i).getCityinfo()%>'><div id='borderWrap'><div class='border1'></div><div id='border2'></div><div class='border1'></div></div><div id='planInsert'><input type='text' class='demo' name='demo'/><div><%= arry.get(i).getCityname()%></div><div class='insertPlanInfo'><%= arry.get(i).getCityinfo()%></div><div class='listClose' onclick='deleteList(this)'>삭제</div></div></div>";			
 			count++;
 		}
 	<%
 		}
 	%>
+	$(function () {
+	    $('.demo').daterangepicker({
+	        "locale": {
+	            "format": "YYYY-MM-DD",
+	            "separator": " ~ ",
+	            "applyLabel": "확인",
+	            "cancelLabel": "취소",
+	            "fromLabel": "From",
+	            "toLabel": "To",
+	            "customRangeLabel": "Custom",
+	            "weekLabel": "W",
+	            "daysOfWeek": ["일", "월", "화", "수", "목", "금", "토"],
+	            "monthNames": ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+	            "firstDay": 1
+	        },
+	        "startDate": "2020-10-21",
+	        "endDate": "2020-10-23",
+	        "drops": "down"
+	    }, function (start, end, label) {
+	        console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+	    });
+	});
 	}
+</script>
+<script type="text/javascript">
+
 </script>
 </form>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCY1oDgXTf55jiJBGLsiTsCgf9DyrlU66E&libraries=places&callback=initMap&v=weekly" defer></script>

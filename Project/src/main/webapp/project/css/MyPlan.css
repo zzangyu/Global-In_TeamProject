@@ -70,9 +70,24 @@
 #planInsert {
 	flex: 0.8;
 }
+.listClose {
+	display: inline-block;
+	float: right;
+	padding:2px 3px;
+	
+}
+.listClose:hover {
+	cursor: pointer;
+	border-radius: 3px;
+	background-color: #999;
+	color: white;
+}
+.insertPlanInfo {
+	display: inline-block;
+}
 
 /* 검색 */
-button {
+#searchBtn {
 	position: absolute;
 	top: 63px;
 	left: 690px;
