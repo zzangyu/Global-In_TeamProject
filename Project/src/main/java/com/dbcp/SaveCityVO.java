@@ -1,18 +1,10 @@
 package com.dbcp;
 
-import java.sql.Timestamp;
-
 public class SaveCityVO {
-	private Timestamp regdate; 
+
 	private String save_city_eng; 
 	private String save_city_kor;
 	
-	public Timestamp getRegdate() {
-		return regdate;
-	}
-	public void setRegdate(Timestamp regdate) {
-		this.regdate = regdate;
-	}
 	public String getSave_city_eng() {
 		return save_city_eng;
 	}

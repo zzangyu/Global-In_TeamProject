@@ -87,10 +87,9 @@ public class DBCPPlanCityInfo{
 		try {			
 			saveCity = new SaveCityVO();
 			conn = ds.getConnection();
-			pstmt = conn.prepareStatement("insert into saveCity (save_city_eng, save_city_kor, regDate) values(?, ?, ?)");
+			pstmt = conn.prepareStatement("insert into saveCity (save_city_eng, save_city_kor) values(?, ?)");
 			pstmt.setString(1, eng);
 			pstmt.setString(2, kor);
-			pstmt.setTimestamp(3, saveCity.getRegdate());
 			pstmt.executeUpdate();
 			
 		} catch (SQLException s1) {

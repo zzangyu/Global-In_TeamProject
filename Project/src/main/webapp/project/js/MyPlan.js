@@ -8,7 +8,7 @@ var infoGo = function(name) {
   		var posT=( screenH-popH ) / 2;   // 띄울창의 세로 포지션 
     	window.open(url,"post",'width='+ popW +',height='+ popH +',top='+ posT +',left='+ posL +"toolbar=no, directories=no, status=yes, scrollbars=yes, menubar=no");
 		/*새로 뜨는 창 설정*/ 
-    };
+};
 
 
 function deleteList(ths){

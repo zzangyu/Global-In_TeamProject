@@ -151,6 +151,7 @@ function initMap() {
   		    ];
   		  	
   		  	var infowindow = new google.maps.InfoWindow(); /* 마커 눌렀을 때 나오는 창 */
+
   		  	var infoclose = true; /* 마커 눌렀을 때 나오는 창 닫기 위해 만든 boolean*/
   			// Create markers.
   		    for (let i = 0; i < features.length; i++) {
@@ -179,10 +180,10 @@ function initMap() {
   		        })(marker, i)); /* 얜 모름; */
   		        
   		  	}
+
   	});
 }
 </script>
-
 <script type="text/javascript">
 	var count = 1;
 	var sendValue = function(name) {
@@ -190,7 +191,7 @@ function initMap() {
 		for(int i = 0; i < arry.size(); i++){
 	%>	
 		if(name === '<%= arry.get(i).getCityname() %>'){
-			document.getElementById("plan_cities").innerHTML += "<input type='hidden' name='cityEn' value='<%= arry.get(i).getCityname()%>'><input type='hidden' name='cityKr' value='<%= arry.get(i).getCityinfo()%>'><div id='planInsert_size'><div id='borderWrap'><div class='border1'></div><div id='border2'></div><div class='border1'></div></div><div id='planInsert'><div><%= arry.get(i).getCityname()%></div><div><%= arry.get(i).getCityinfo()%></div><div onclick='deleteList(this)'>X</div></div></div>";			
+			document.getElementById("plan_cities").innerHTML += "<input type='hidden' name='cityEn"+count+"' value='<%= arry.get(i).getCityname()%>'><input type='hidden' name='cityKr"+count+"' value='<%= arry.get(i).getCityinfo()%>'><div id='planInsert_size'><div id='borderWrap'><div class='border1'></div><div id='border2'></div><div class='border1'></div></div><div id='planInsert'><div><%= arry.get(i).getCityname()%></div><div><%= arry.get(i).getCityinfo()%></div><div onclick='deleteList(this)'>X</div></div></div>";			
 			count++;
 		}
 	<%
@@ -198,7 +199,6 @@ function initMap() {
 	%>
 	}
 </script>
-		
 </form>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCY1oDgXTf55jiJBGLsiTsCgf9DyrlU66E&libraries=places&callback=initMap&v=weekly" defer></script>
 </body>
