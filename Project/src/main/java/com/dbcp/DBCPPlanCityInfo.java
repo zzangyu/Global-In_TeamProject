@@ -1,6 +1,7 @@
 package com.dbcp;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -76,4 +77,28 @@ public class DBCPPlanCityInfo{
 		
 	}
 	
+	public void savePlan(String eng, String kor) {
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		SaveCityVO saveCity = null;
+		
+		try {			
+			saveCity = new SaveCityVO();
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement("insert into saveCity (save_city_eng, save_city_kor, regDate) values(?, ?, ?)");
+			pstmt.setString(1, eng);
+			pstmt.setString(2, kor);
+			pstmt.setTimestamp(3, saveCity.getRegdate());
+			pstmt.executeUpdate();
+			
+		} catch (SQLException s1) {
+			s1.printStackTrace();
+		} finally {
+			if(rs!=null) try {rs.close();} catch (SQLException s1) { }
+			if(pstmt!=null) try {pstmt.close();} catch (SQLException s2) { }
+			if(conn!=null) try {conn.close();} catch (SQLException s3) { }
+		}
+	}
 }

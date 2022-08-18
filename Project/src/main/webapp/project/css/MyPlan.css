@@ -80,7 +80,7 @@ button {
 	border: none;
 	background-color: white;
 }
-input {
+#input {
 	position: absolute;
 	top: 47px;
 	left: 440px;
@@ -92,6 +92,18 @@ input {
 }
 .gm-control-active{
 	display: none !important;
+}
+
+/* 저장 */
+#savePlan {
+	position: absolute;
+	top: 47px;
+	left: 1400px;
+	z-index: 2;
+	height: 3em;
+	background-color: white;
+	padding: 0 10px;
+	border: 2px solid #efefef;
 }
 
 /* 구글 맵 */

@@ -16,19 +16,18 @@
 <script src="https://kit.fontawesome.com/e14a2b80fa.js" crossorigin="anonymous"></script> <!-- 폰트어썸 아이콘 -->
 </head>
 <body>
-<form action="#">
+<form action="saveProc.jsp" method="post" name="saveForm">
 	<div id="mapWrap">
 		<div id="hello">Let's &nbsp;make &nbsp;a &nbsp;plan</div>
 		<input id="input" type="text" name="userSearch" placeholder="도시를 입력해주세요. 엔터x"> <!-- 검색창 -->
-		<button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button> <!-- 검색창 버튼 -->
+		<button><i class="fa-solid fa-magnifying-glass"></i></button> <!-- 검색창 버튼 -->
 		<div id="plan"> <!-- 일정 div -->
 			<div id="plan_cities"></div>
 		</div>
 		<!-- google map div -->
-
+		<input id="savePlan" type="submit" value="저정하기">
 	</div>
     	<div id="map" onload="initMap()"></div>
-</form>
 <script type="text/javascript" src="js/MyPlan.js"></script>
 <!-- google map key, 맵 구현 -->
 <script type="text/javascript">
@@ -191,7 +190,7 @@ function initMap() {
 		for(int i = 0; i < arry.size(); i++){
 	%>	
 		if(name === '<%= arry.get(i).getCityname() %>'){
-			document.getElementById("plan_cities").innerHTML += "<div id='planInsert_size'><div id='borderWrap'><div class='border1'></div><div id='border2'></div><div class='border1'></div></div><div id='planInsert'><div><%= arry.get(i).getCityname()%></div><div><%= arry.get(i).getCityinfo()%></div><div onclick='deleteList(this)'>X</div></div></div>";			
+			document.getElementById("plan_cities").innerHTML += "<input type='hidden' name='cityEn' value='<%= arry.get(i).getCityname()%>'><input type='hidden' name='cityKr' value='<%= arry.get(i).getCityinfo()%>'><div id='planInsert_size'><div id='borderWrap'><div class='border1'></div><div id='border2'></div><div class='border1'></div></div><div id='planInsert'><div><%= arry.get(i).getCityname()%></div><div><%= arry.get(i).getCityinfo()%></div><div onclick='deleteList(this)'>X</div></div></div>";			
 			count++;
 		}
 	<%
@@ -199,7 +198,8 @@ function initMap() {
 	%>
 	}
 </script>
-
+		
+</form>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCY1oDgXTf55jiJBGLsiTsCgf9DyrlU66E&libraries=places&callback=initMap&v=weekly" defer></script>
 </body>
 </html>
