@@ -34,7 +34,7 @@
 	width: 100%;
 	overflow: auto;
 }
-#planInsert_size {
+.planInsert_size {
 	display: flex;
 	width: 92%;
 	height: 70px;

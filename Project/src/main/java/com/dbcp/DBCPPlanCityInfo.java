@@ -76,20 +76,19 @@ public class DBCPPlanCityInfo{
 		return arry;
 		
 	}
-	public List<Integer> idCheck(String id) {
+	public List<String> idCheck(String id) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		SaveCityVO saveCity = null;
-		List<Integer> saveCity_List = new ArrayList<Integer>();
+		List<String> saveCity_List = new ArrayList<String>();
 		try {			
-			saveCity = new SaveCityVO();
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement("select save_city_idCheck from saveCity where save_city_id=?");
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				saveCity.setSave_city_idCheck(rs.getInt("save_city_idCheck"));
+				SaveCityVO saveCity = new SaveCityVO();
+				saveCity.setSave_city_idCheck(rs.getString("save_city_idCheck"));
 				saveCity_List.add(saveCity.getSave_city_idCheck());
 			}
 			
@@ -104,19 +103,17 @@ public class DBCPPlanCityInfo{
 		return saveCity_List;
 	}
 	
-	public void savePlan(String id, int idCheck,String eng, String kor, String sch) {
+	public void savePlan(String id, String idCheck,String eng, String kor, String sch) {
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		SaveCityVO saveCity = null;
 		
 		try {			
-			saveCity = new SaveCityVO();
 			conn = ds.getConnection();
-			pstmt = conn.prepareStatement("insert into saveCity (save_city_id, save_city_idCheck, save_city_eng, save_city_kor, save_schedule) values(?, ?, ?, ?, ?)");
+			pstmt = conn.prepareStatement("insert into saveCity (save_city_id, save_city_idCheck, save_city_eng, save_city_kor, save_schedule) values (?, ?, ?, ?, ?)");
 			pstmt.setString(1, id);
-			pstmt.setInt(2, idCheck);
+			pstmt.setString(2, idCheck);
 			pstmt.setString(3, eng);
 			pstmt.setString(4, kor);
 			pstmt.setString(5, sch);
@@ -130,26 +127,28 @@ public class DBCPPlanCityInfo{
 			if(conn!=null) try {conn.close();} catch (SQLException s3) { }
 		}
 	}
-	public List<SaveCityVO> getCity(int idCheck) {
+	public List<SaveCityVO> getCity(String idCheck, String id) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
 		List<SaveCityVO> arry = new ArrayList<SaveCityVO>();
 		
+		
 		try {
-			SaveCityVO vo = new SaveCityVO();
 			conn = ds.getConnection();
 			
-			String strQuery = "select * from saveCity where save_city_idCheck=? order by save_schedule asc";
+			String strQuery = "select * from saveCity where save_city_idCheck=? and save_city_id=?";
 			pstmt = conn.prepareStatement(strQuery);
-			pstmt.setInt(1, idCheck);
+			pstmt.setString(1, idCheck);
+			pstmt.setString(2, id);
 			
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
+				SaveCityVO vo = new SaveCityVO();
 				vo.setSave_city_id(rs.getString("save_city_id"));
-				vo.setSave_city_idCheck(rs.getInt("save_city_idCheck"));
+				vo.setSave_city_idCheck(rs.getString("save_city_idCheck"));
 				vo.setSave_city_eng(rs.getString("save_city_eng"));
 				vo.setSave_city_kor(rs.getString("save_city_kor"));
 				vo.setSave_schedule(rs.getString("save_schedule"));
@@ -171,40 +170,74 @@ public class DBCPPlanCityInfo{
 		
 	}
 	
-	public void updatePlan(String id) {
+	public void deletePlan(String idCheck) {
 		Connection conn = null;
-		Statement stmt = null;
-		ResultSet rs = null;
-		
-		List<SaveCityVO> arry = new ArrayList<SaveCityVO>();
+		PreparedStatement pstmt = null;
 		
 		try {
 			conn = ds.getConnection();
 			
-			String strQuery = "select * from saveCity order by save_schedule asc";
-			stmt = conn.createStatement();
-			
-			rs = stmt.executeQuery(strQuery);
-			
-			while(rs.next()) {
-				SaveCityVO vo = new SaveCityVO();
-				vo.setSave_city_id(rs.getString("save_city_id"));
-				vo.setSave_city_idCheck(rs.getInt("save_city_idCheck"));
-				vo.setSave_city_eng(rs.getString("save_city_eng"));
-				vo.setSave_city_kor(rs.getString("save_city_kor"));
-				vo.setSave_schedule(rs.getString("save_schedule"));
-				
-				arry.add(vo);
-			}
+			String strQuery = "delete saveCity where save_city_idCheck=?";
+			pstmt = conn.prepareStatement(strQuery);
+			pstmt.setString(1, idCheck);
+			pstmt.executeUpdate();
 			
 		} catch (SQLException ss) {
-			System.out.println("sql Exception");
+			System.out.println("sql Exception 173");
 		} catch (Exception e) {
 			System.out.println("Exception");
 		} finally {
 			if(conn != null) try{ conn.close(); }catch(SQLException s1){}
-			if(stmt != null) try{ stmt.close(); }catch(SQLException s2){}
-			if(rs != null) try{ rs.close(); }catch(SQLException s3){}
+			if(pstmt != null) try{ pstmt.close(); }catch(SQLException s2){}
+		}	
+		
+	}
+	public void deletePlan(String idCheck, String en) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = ds.getConnection();
+			
+			String strQuery = "delete saveCity where save_city_idCheck=? and save_city_eng=?";
+			pstmt = conn.prepareStatement(strQuery);
+			pstmt.setString(1, idCheck);
+			pstmt.setString(2, en);
+			pstmt.executeUpdate();
+			
+		} catch (SQLException ss) {
+			System.out.println("sql Exception 195");
+		} catch (Exception e) {
+			System.out.println("Exception");
+		} finally {
+			if(conn != null) try{ conn.close(); }catch(SQLException s1){}
+			if(pstmt != null) try{ pstmt.close(); }catch(SQLException s2){}
+		}	
+		
+	}
+	public void updatePlan(String id, String idCheck, String eng, String kor, String sch) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = ds.getConnection();
+		
+			String strQuery = "insert into saveCity values (?, ?, ?, ?, ?)";
+			pstmt = conn.prepareStatement(strQuery);
+			pstmt.setString(1, id);
+			pstmt.setString(2, idCheck);
+			pstmt.setString(3, eng);
+			pstmt.setString(4, kor);
+			pstmt.setString(5, sch);
+			pstmt.executeUpdate();
+			
+		} catch (SQLException ss) {
+			System.out.println("sql Exception 218");
+		} catch (Exception e) {
+			System.out.println("Exception");
+		} finally {
+			if(conn != null) try{ conn.close(); }catch(SQLException s1){}
+			if(pstmt != null) try{ pstmt.close(); }catch(SQLException s2){}
 		}	
 		
 	}

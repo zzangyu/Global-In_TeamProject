@@ -193,13 +193,13 @@ function initMap() {
 		for(int i = 0; i < arry.size(); i++){
 	%>	
 		if(name === '<%= arry.get(i).getCityname() %>'){
-			document.getElementById("plan_cities").innerHTML += "<div id='planInsert_size'><input type='hidden' name='cityEn"+count+"' value='<%= arry.get(i).getCityname()%>'><input type='hidden' name='cityKr"+count+"' value='<%= arry.get(i).getCityinfo()%>'><div id='borderWrap'><div class='border1'></div><div id='border2'></div><div class='border1'></div></div><div id='planInsert'><input type='text' class='demo' name='demo'/><div><%= arry.get(i).getCityname()%></div><div class='insertPlanInfo'><%= arry.get(i).getCityinfo()%></div><div class='listClose' onclick='deleteList(this)'>삭제</div></div></div>";			
+			document.getElementById("plan_cities").innerHTML += "<div class='planInsert_size'><input type='hidden' name='cityEn"+count+"' value='<%= arry.get(i).getCityname()%>'><input type='hidden' name='cityKr"+count+"' value='<%= arry.get(i).getCityinfo()%>'><div id='borderWrap'><div class='border1'></div><div id='border2'></div><div class='border1'></div></div><div id='planInsert'><input type='text' class='demo' name='sche"+count+"'/><div><%= arry.get(i).getCityname()%></div><div class='insertPlanInfo'><%= arry.get(i).getCityinfo()%></div><div class='listClose' onclick='deleteList(this)'>삭제</div></div></div>";			
 			count++;
 		}
 	<%
 		}
 	%>
-	$(function () {
+	$(function check() {
 	    $('.demo').daterangepicker({
 	        "locale": {
 	            "format": "YYYY-MM-DD",
@@ -221,9 +221,8 @@ function initMap() {
 	        console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
 	    });
 	});
+	
 	}
-</script>
-<script type="text/javascript">
 </script>
 </form>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCY1oDgXTf55jiJBGLsiTsCgf9DyrlU66E&libraries=places&callback=initMap&v=weekly" defer></script>

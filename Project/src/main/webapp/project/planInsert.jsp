@@ -3,7 +3,11 @@
 <%@ page import="java.sql.*, com.dbcp.*, java.util.*"%>
     <jsp:useBean id="dao" class="com.dbcp.DBCPPlanCityInfo" scope="page" />
     <jsp:useBean id="dao2" class="com.dbcp.DBCP" scope="page" />
-    <% List<SaveCityVO> arry = dao.getCity(1); %>
+    <% 
+    	String id = "han";
+    	String idCheck = "8han1";
+    	List<SaveCityVO> arry = dao.getCity(idCheck, id); 
+    %>
     <% List<CityVO> arry2 = dao2.getCity(); %>
     
 <!DOCTYPE html>
@@ -32,20 +36,21 @@
 		<button id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></button> <!-- 검색창 버튼 -->
 		<div id="plan"> <!-- 일정 div -->
 			<div id="plan_cities">
-				<% for(int i = 0; i < arry.size(); i++) {%>
+				<% for(int i = 0; i< arry.size(); i++) {%>
 				<div class="planInsert_size">
-					<input type="hidden" name="cityEn<%= i%>" value="<%= arry2.get(i).getCityname()%>">
-					<input type="hidden" name="cityKr<%= i%> %>" value="<%= arry2.get(i).getCityinfo()%>">
-					<div class="planInsert">
-					<div class="borderWrap">
+					<input type="hidden" name="idCheck" value="<%= idCheck%>">
+					<input type="hidden" name="bfcityEn<%= i+1%>" value="<%= arry.get(i).getSave_city_eng()%>">
+					<input type="hidden" name="bfcityKr<%= i+1%>" value="<%= arry.get(i).getSave_city_kor()%>">
+					<div id="borderWrap">
 						<div class="border1"></div>
-						<div class="border2"></div>
+						<div id="border2"></div>
 						<div class="border1"></div>
 					</div>
-						<input type="text" class="demo" name="sche<%= i%>"/>
+					<div id="planInsert">
+						<input type="text" class="demoBefore" name="bfsche<%= i%>"/>
 						<script type="text/javascript">
 							$(function () {
-    							$('.demo').daterangepicker({
+    							$('.demoBefore').daterangepicker({
         							"locale": {
             							"format": "YYYY-MM-DD",
             							"separator": " ~ ",
@@ -237,7 +242,7 @@ function initMap() {
 		for(int i = 0; i < arry2.size(); i++){
 	%>	
 		if(name === '<%= arry2.get(i).getCityname() %>'){
-			document.getElementById("plan_cities").innerHTML += "<div class='planInsert_size'><input type='hidden' name='cityEn"+count+"' value='<%= arry2.get(i).getCityname()%>'><input type='hidden' name='cityKr"+count+"' value='<%= arry2.get(i).getCityinfo()%>'><div class='borderWrap'><div class='border1'></div><div class='border2'></div><div class='border1'></div></div><div class='planInsert'><input type='text' class='demo' name='sche"+count+"'/><div><%= arry2.get(i).getCityname()%></div><div class='insertPlanInfo'><%= arry2.get(i).getCityinfo()%></div><div class='listClose' onclick='deleteList(this)'>삭제</div></div></div>";			
+			document.getElementById("plan_cities").innerHTML += "<div class='planInsert_size'><input type='hidden' name='idCheck' value='<%= idCheck%>'><input type='hidden' name='cityEn"+count+"' value='<%= arry2.get(i).getCityname()%>'><input type='hidden' name='cityKr"+count+"' value='<%= arry2.get(i).getCityinfo()%>'><div id='borderWrap'><div class='border1'></div><div id='border2'></div><div class='border1'></div></div><div id='planInsert'><input type='text' class='demo' name='sche"+count+"'/><div><%= arry2.get(i).getCityname()%></div><div class='insertPlanInfo'><%= arry2.get(i).getCityinfo()%></div><div class='listClose' onclick='deleteList(this)'>삭제</div></div></div>";			
 			count++;
 		}
 	<%
