@@ -76,8 +76,35 @@ public class DBCPPlanCityInfo{
 		return arry;
 		
 	}
+	public List<Integer> idCheck(String id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		SaveCityVO saveCity = null;
+		List<Integer> saveCity_List = new ArrayList<Integer>();
+		try {			
+			saveCity = new SaveCityVO();
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement("select save_city_idCheck from saveCity where save_city_id=?");
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				saveCity.setSave_city_idCheck(rs.getInt("save_city_idCheck"));
+				saveCity_List.add(saveCity.getSave_city_idCheck());
+			}
+			
+		} catch (SQLException s1) {
+			s1.printStackTrace();
+		} finally {
+			if(rs!=null) try {rs.close();} catch (SQLException s1) { }
+			if(pstmt!=null) try {pstmt.close();} catch (SQLException s2) { }
+			if(conn!=null) try {conn.close();} catch (SQLException s3) { }
+		
+		}
+		return saveCity_List;
+	}
 	
-	public void savePlan(String eng, String kor) {
+	public void savePlan(String id, int idCheck,String eng, String kor, String sch) {
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -87,9 +114,12 @@ public class DBCPPlanCityInfo{
 		try {			
 			saveCity = new SaveCityVO();
 			conn = ds.getConnection();
-			pstmt = conn.prepareStatement("insert into saveCity (save_city_eng, save_city_kor) values(?, ?)");
-			pstmt.setString(1, eng);
-			pstmt.setString(2, kor);
+			pstmt = conn.prepareStatement("insert into saveCity (save_city_id, save_city_idCheck, save_city_eng, save_city_kor, save_schedule) values(?, ?, ?, ?, ?)");
+			pstmt.setString(1, id);
+			pstmt.setInt(2, idCheck);
+			pstmt.setString(3, eng);
+			pstmt.setString(4, kor);
+			pstmt.setString(5, sch);
 			pstmt.executeUpdate();
 			
 		} catch (SQLException s1) {
@@ -99,5 +129,83 @@ public class DBCPPlanCityInfo{
 			if(pstmt!=null) try {pstmt.close();} catch (SQLException s2) { }
 			if(conn!=null) try {conn.close();} catch (SQLException s3) { }
 		}
+	}
+	public List<SaveCityVO> getCity(int idCheck) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		List<SaveCityVO> arry = new ArrayList<SaveCityVO>();
+		
+		try {
+			SaveCityVO vo = new SaveCityVO();
+			conn = ds.getConnection();
+			
+			String strQuery = "select * from saveCity where save_city_idCheck=? order by save_schedule asc";
+			pstmt = conn.prepareStatement(strQuery);
+			pstmt.setInt(1, idCheck);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				vo.setSave_city_id(rs.getString("save_city_id"));
+				vo.setSave_city_idCheck(rs.getInt("save_city_idCheck"));
+				vo.setSave_city_eng(rs.getString("save_city_eng"));
+				vo.setSave_city_kor(rs.getString("save_city_kor"));
+				vo.setSave_schedule(rs.getString("save_schedule"));
+				
+				arry.add(vo);
+			}
+			
+		} catch (SQLException ss) {
+			System.out.println("sql Exception");
+		} catch (Exception e) {
+			System.out.println("Exception");
+		} finally {
+			if(conn != null) try{ conn.close(); }catch(SQLException s1){}
+			if(pstmt != null) try{ pstmt.close(); }catch(SQLException s2){}
+			if(rs != null) try{ rs.close(); }catch(SQLException s3){}
+		}	
+		
+		return arry;
+		
+	}
+	
+	public void updatePlan(String id) {
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+		List<SaveCityVO> arry = new ArrayList<SaveCityVO>();
+		
+		try {
+			conn = ds.getConnection();
+			
+			String strQuery = "select * from saveCity order by save_schedule asc";
+			stmt = conn.createStatement();
+			
+			rs = stmt.executeQuery(strQuery);
+			
+			while(rs.next()) {
+				SaveCityVO vo = new SaveCityVO();
+				vo.setSave_city_id(rs.getString("save_city_id"));
+				vo.setSave_city_idCheck(rs.getInt("save_city_idCheck"));
+				vo.setSave_city_eng(rs.getString("save_city_eng"));
+				vo.setSave_city_kor(rs.getString("save_city_kor"));
+				vo.setSave_schedule(rs.getString("save_schedule"));
+				
+				arry.add(vo);
+			}
+			
+		} catch (SQLException ss) {
+			System.out.println("sql Exception");
+		} catch (Exception e) {
+			System.out.println("Exception");
+		} finally {
+			if(conn != null) try{ conn.close(); }catch(SQLException s1){}
+			if(stmt != null) try{ stmt.close(); }catch(SQLException s2){}
+			if(rs != null) try{ rs.close(); }catch(SQLException s3){}
+		}	
+		
 	}
 }

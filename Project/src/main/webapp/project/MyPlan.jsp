@@ -14,7 +14,7 @@
 <link rel="stylesheet" type="text/css" href="css/MyPlan.css" />
 <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@700&display=swap" rel="stylesheet"> <!-- 폰트 -->
 <script src="https://kit.fontawesome.com/e14a2b80fa.js" crossorigin="anonymous"></script> <!-- 폰트어썸 아이콘 -->
-<!-- js -->
+<!-- js -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
@@ -83,7 +83,6 @@ function initMap() {
  		<%
   		}
 		%>
-
     ];
   	
   	var infowindow = new google.maps.InfoWindow(); /* 마커 눌렀을 때 나오는 창 */
@@ -153,11 +152,9 @@ function initMap() {
   		 		<%
   		  		}
   				%>
-
   		    ];
   		  	
   		  	var infowindow = new google.maps.InfoWindow(); /* 마커 눌렀을 때 나오는 창 */
-
   		  	var infoclose = true; /* 마커 눌렀을 때 나오는 창 닫기 위해 만든 boolean*/
   			// Create markers.
   		    for (let i = 0; i < features.length; i++) {
@@ -186,7 +183,6 @@ function initMap() {
   		        })(marker, i)); /* 얜 모름; */
   		        
   		  	}
-
   	});
 }
 </script>
@@ -228,7 +224,6 @@ function initMap() {
 	}
 </script>
 <script type="text/javascript">
-
 </script>
 </form>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCY1oDgXTf55jiJBGLsiTsCgf9DyrlU66E&libraries=places&callback=initMap&v=weekly" defer></script>
