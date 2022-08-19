@@ -5,7 +5,7 @@
     <jsp:useBean id="dao2" class="com.dbcp.DBCP" scope="page" />
     <% 
     	String id = "han";
-    	String idCheck = "8han1";
+    	String idCheck = "1han1";
     	List<SaveCityVO> arry = dao.getCity(idCheck, id); 
     %>
     <% List<CityVO> arry2 = dao2.getCity(); %>
@@ -47,7 +47,7 @@
 						<div class="border1"></div>
 					</div>
 					<div id="planInsert">
-						<input type="text" class="demoBefore" name="bfsche<%= i%>"/>
+						<input type="text" class="demoBefore" name="bfsche"/>
 						<script type="text/javascript">
 							$(function () {
     							$('.demoBefore').daterangepicker({
@@ -83,6 +83,7 @@
 		<!-- google map div -->
 		<input id="savePlan" type="submit" value="저정하기">
 	</div>
+</form>
     	<div id="map" onload="initMap()"></div>
 <script type="text/javascript" src="js/MyPlan.js"></script>
 <!-- google map key, 맵 구현 -->
@@ -272,7 +273,7 @@ function initMap() {
 	});
 	}
 </script>
-</form>
+
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCY1oDgXTf55jiJBGLsiTsCgf9DyrlU66E&libraries=places&callback=initMap&v=weekly" defer></script>
 </body>
 </html>

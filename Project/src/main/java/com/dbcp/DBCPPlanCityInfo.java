@@ -222,7 +222,7 @@ public class DBCPPlanCityInfo{
 		try {
 			conn = ds.getConnection();
 		
-			String strQuery = "insert into saveCity values (?, ?, ?, ?, ?)";
+			String strQuery = "insert into saveCity (save_city_id, save_city_idCheck, save_city_eng, save_city_kor, save_schedule) values (?,?,?,?,?)";
 			pstmt = conn.prepareStatement(strQuery);
 			pstmt.setString(1, id);
 			pstmt.setString(2, idCheck);

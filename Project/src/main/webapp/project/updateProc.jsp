@@ -12,15 +12,16 @@
 <%	
 	String id = "han";
 	String idCheck = request.getParameter("idCheck");
+	
 	boolean deleteCheck = false;
 	for(int i = 1; i < 10; i++){
-		dao.deletePlan(idCheck, request.getParameter("bfcityEn"+i));
-	}
-	for(int i = 1; i < 10; i++){
+
 		if(request.getParameter("bfcityEn"+i) != null) {
-			
+			dao.deletePlan(idCheck, request.getParameter("bfcityEn"+i)); // 밑에가 에러같음..
+			dao.updatePlan(id, idCheck, request.getParameter("bfcityEn1"), request.getParameter("bfcityKr1"), request.getParameter("bfsche1"));
 			deleteCheck = true;
 		}
+
 	}
 	if(!deleteCheck) {
 		dao.deletePlan(idCheck);
