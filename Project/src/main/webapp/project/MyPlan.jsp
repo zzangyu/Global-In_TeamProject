@@ -31,7 +31,7 @@
 			<div id="plan_cities"></div>
 		</div>
 		<!-- google map div -->
-		<input id="savePlan" type="submit" value="저정하기">
+		<input id="savePlan" type="submit" value="저장하기">
 	</div>
     	<div id="map" onload="initMap()"></div>
 <script type="text/javascript" src="js/MyPlan.js"></script>
@@ -193,35 +193,32 @@ function initMap() {
 		for(int i = 0; i < arry.size(); i++){
 	%>	
 		if(name === '<%= arry.get(i).getCityname() %>'){
-			document.getElementById("plan_cities").innerHTML += "<div class='planInsert_size'><input type='hidden' name='cityEn"+count+"' value='<%= arry.get(i).getCityname()%>'><input type='hidden' name='cityKr"+count+"' value='<%= arry.get(i).getCityinfo()%>'><div id='borderWrap'><div class='border1'></div><div id='border2'></div><div class='border1'></div></div><div id='planInsert'><input type='text' class='demo' name='sche"+count+"'/><div><%= arry.get(i).getCityname()%></div><div class='insertPlanInfo'><%= arry.get(i).getCityinfo()%></div><div class='listClose' onclick='deleteList(this)'>삭제</div></div></div>";			
+			document.getElementById("plan_cities").innerHTML += "<div class='planInsert_size'><input type='hidden' name='count' value='"+count+"'><input type='hidden' name='cityEn"+count+"' value='<%= arry.get(i).getCityname()%>'><input type='hidden' name='cityKr"+count+"' value='<%= arry.get(i).getCityinfo()%>'><div id='borderWrap'><div class='border1'></div><div id='border2'></div><div class='border1'></div></div><div id='planInsert'><input type='text' class='demo' name='sche"+count+"'/><div><%= arry.get(i).getCityname()%></div><div class='insertPlanInfo'><%= arry.get(i).getCityinfo()%></div><div class='listClose' onclick='deleteList(this)'>삭제</div></div></div>";			
 			count++;
 		}
 	<%
 		}
 	%>
-	$(function check() {
-	    $('.demo').daterangepicker({
-	        "locale": {
-	            "format": "YYYY-MM-DD",
-	            "separator": " ~ ",
-	            "applyLabel": "확인",
-	            "cancelLabel": "취소",
-	            "fromLabel": "From",
-	            "toLabel": "To",
-	            "customRangeLabel": "Custom",
-	            "weekLabel": "W",
-	            "daysOfWeek": ["일", "월", "화", "수", "목", "금", "토"],
-	            "monthNames": ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
-	            "firstDay": 1
-	        },
-	        "startDate": "2020-10-21",
-	        "endDate": "2020-10-23",
-	        "drops": "down"
-	    }, function (start, end, label) {
-	        console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
-	    });
-	});
-	
+		$(function check() {
+	    	$(".demo").daterangepicker({
+	     	   "locale": {
+	    	        "format": "YYYY-MM-DD",
+	    	        "separator": " ~ ",
+	    	        "applyLabel": "확인",
+	    	        "cancelLabel": "취소",
+	    	        "fromLabel": "From",
+	    	        "toLabel": "To",
+	     	       	"customRangeLabel": "Custom",
+	    	        "weekLabel": "W",
+	         	    "daysOfWeek": ["일", "월", "화", "수", "목", "금", "토"],
+	    	        "monthNames": ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+	            	"firstDay": 1
+	        	},
+	        	"drops": "right"
+	    	}, function (start, end, label) {
+	        	console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+	    	});
+		});
 	}
 </script>
 </form>

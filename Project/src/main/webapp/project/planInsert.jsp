@@ -4,24 +4,24 @@
     <jsp:useBean id="dao" class="com.dbcp.DBCPPlanCityInfo" scope="page" />
     <jsp:useBean id="dao2" class="com.dbcp.DBCP" scope="page" />
     <% 
-    	String id = "han";
-    	String idCheck = "1han1";
-    	List<SaveCityVO> arry = dao.getCity(idCheck, id); 
+    	String id = "han"; // 임의로 지정 => session으로 받을 예정
+    	String idCheck = "2han8"; // 임의로 지정 => 마이페이지 완성되면 변경
+    	List<SaveCityVO> arry = dao.getCity(idCheck, id); // 저장되어 있던 나라들 호출
     %>
-    <% List<CityVO> arry2 = dao2.getCity(); %>
+    <% List<CityVO> arry2 = dao2.getCity(); // 도시 전체 호출 %> 
     
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>메롱</title>
+<title>My Plan</title>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script> <!-- 구글맵 스트립트 -->
 
-<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script> <!-- JQuery -->
 <link rel="stylesheet" type="text/css" href="css/MyPlan.css" />
 <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@700&display=swap" rel="stylesheet"> <!-- 폰트 -->
 <script src="https://kit.fontawesome.com/e14a2b80fa.js" crossorigin="anonymous"></script> <!-- 폰트어썸 아이콘 -->
-<!-- js -->
+<!-- daterangepicker -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
@@ -29,28 +29,29 @@
 
 </head>
 <body>
-<form action="updateProc.jsp" method="post" name="updateForm">
+<form action="updateProc.jsp" method="post" name="updateForm"> <!-- 정보를 보내기 위해 form 생성 -->
 	<div id="mapWrap">
 		<div id="hello">Let's &nbsp;make &nbsp;a &nbsp;plan</div>
 		<input id="input" type="text" name="userSearch" placeholder="도시를 입력해주세요. 엔터x"> <!-- 검색창 -->
 		<button id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></button> <!-- 검색창 버튼 -->
 		<div id="plan"> <!-- 일정 div -->
 			<div id="plan_cities">
-				<% for(int i = 0; i< arry.size(); i++) {%>
+				<% for(int i = 0; i< arry.size(); i++) {%> <!-- 저장됐던 나라들을 미리 화면에 보여주기 위한 for문 -->
 				<div class="planInsert_size">
-					<input type="hidden" name="idCheck" value="<%= idCheck%>">
+					<input type="hidden" name="idCheck" value="<%= idCheck%>"> 
 					<input type="hidden" name="bfcityEn<%= i+1%>" value="<%= arry.get(i).getSave_city_eng()%>">
 					<input type="hidden" name="bfcityKr<%= i+1%>" value="<%= arry.get(i).getSave_city_kor()%>">
+					<!-- 이전에 저장되었던 정보들을 updateProc.jsp에 보내기위해 hidden을 사용함 -->
 					<div id="borderWrap">
-						<div class="border1"></div>
+						<div class="border1"></div> <!-- 추가된 공간에 border를 이용해서 꾸미기 위해 만든 div -->
 						<div id="border2"></div>
 						<div class="border1"></div>
 					</div>
-					<div id="planInsert">
-						<input type="text" class="demoBefore" name="bfsche"/>
+					<div id="planInsert"> <!-- 이 나라들이 부분에 추가됨 -->
+						<input type="text" class="demoBefore<%= i %>" name="bfsche<%= i+1%>"/> <!-- daterangepicker 불러오기 위한 input -->
 						<script type="text/javascript">
-							$(function () {
-    							$('.demoBefore').daterangepicker({
+							$(function () { /* daterangepicker 초기설정 */
+    							$('.demoBefore<%= i %>').daterangepicker({
         							"locale": {
             							"format": "YYYY-MM-DD",
             							"separator": " ~ ",
@@ -81,7 +82,7 @@
 			</div>
 		</div>
 		<!-- google map div -->
-		<input id="savePlan" type="submit" value="저정하기">
+		<input id="savePlan" type="submit" value="저장하기">
 	</div>
 </form>
     	<div id="map" onload="initMap()"></div>
@@ -237,18 +238,16 @@ function initMap() {
 }
 </script>
 <script type="text/javascript">
-	var count = 1;	
+	var count = 1;	/* 정보를 보낼때 name을 구분해주기 위해 count라는 변수 선언 */
 	var sendValue = function(name) {
 	<%
 		for(int i = 0; i < arry2.size(); i++){
 	%>	
 		if(name === '<%= arry2.get(i).getCityname() %>'){
-			document.getElementById("plan_cities").innerHTML += "<div class='planInsert_size'><input type='hidden' name='idCheck' value='<%= idCheck%>'><input type='hidden' name='cityEn"+count+"' value='<%= arry2.get(i).getCityname()%>'><input type='hidden' name='cityKr"+count+"' value='<%= arry2.get(i).getCityinfo()%>'><div id='borderWrap'><div class='border1'></div><div id='border2'></div><div class='border1'></div></div><div id='planInsert'><input type='text' class='demo' name='sche"+count+"'/><div><%= arry2.get(i).getCityname()%></div><div class='insertPlanInfo'><%= arry2.get(i).getCityinfo()%></div><div class='listClose' onclick='deleteList(this)'>삭제</div></div></div>";			
-			count++;
+			document.getElementById("plan_cities").innerHTML += "<div class='planInsert_size'><input type='hidden' name='count' value='"+count+"'><input type='hidden' name='idCheck' value='<%= idCheck%>'><input type='hidden' name='cityEn"+count+"' value='<%= arry2.get(i).getCityname()%>'><input type='hidden' name='cityKr"+count+"' value='<%= arry2.get(i).getCityinfo()%>'><div id='borderWrap'><div class='border1'></div><div id='border2'></div><div class='border1'></div></div><div id='planInsert'><input type='text' class='demo' name='sche"+count+"'/><div><%= arry2.get(i).getCityname()%></div><div class='insertPlanInfo'><%= arry2.get(i).getCityinfo()%></div><div class='listClose' onclick='deleteList(this)'>삭제</div></div></div>";			
+			count++; /* plan_cities에 추가 했으면 count 증가 */
 		}
-	<%
-		}
-	%>
+
 	$(function () {
 	    $('.demo').daterangepicker({
 	        "locale": {
@@ -271,6 +270,9 @@ function initMap() {
 	        console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
 	    });
 	});
+	<%
+		}
+	%>
 	}
 </script>
 

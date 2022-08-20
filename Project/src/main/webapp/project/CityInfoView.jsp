@@ -17,11 +17,11 @@
 		<div id="Search">
 			<form action="CityInfoSearch.jsp">
 				<div id="submitBtn">
-					<input type="text" name="userSearch" id="userSearch" placeholder="나라-도시 검색">
-					<button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+					<input type="text" name="userSearch" id="userSearch" placeholder="나라-도시 검색"> <!-- 나라 & 도시 검섹 -->
+					<button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button> <!-- 돋보기 아이콘 -->
 				</div>
 			</form>
-				<div class="menu">
+				<div class="menu"> <!-- 클릭 된 곳에 파란색 background-color 고정하기 위해 onclick 이벤트 부여 -->
 					<button class="menu-link" onclick="SearchAll()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
 					<button class="menu-link" onclick="SearchAsia()">&nbsp;&nbsp;&nbsp;Asia&nbsp;&nbsp;&nbsp;</button>
 					<button class="menu-link" onclick="SearchAmerica()">America</button>
@@ -31,21 +31,22 @@
 
 	<jsp:useBean id="dao" class="com.dbcp.DBCP" scope="page" />
 	<%
-		List<CityVO> arry = dao.getCity();
-		for (int i = 0; i < arry.size(); i++) {	
+		List<CityVO> arry = dao.getCity(); /* 내가 저장한 도시 가져오기 */
+		for (int i = 0; i < arry.size(); i++) {	/* 도시 길이만큼 for문 */
 	%>	
-		<div class="<%= arry.get(i).getBtn()%>">
+		<div class="<%= arry.get(i).getBtn()%>"> <!-- 버튼 눌렀을때 display 설정하기 위해 class 속성 부여 -->
 			<div class="btn-open-popup">
-				<a class="btn" href="#<%= arry.get(i).getCityname() %>">
-					<div  class="img"><img src="./img/<%= arry.get(i).getCityname() %>.jpg" width="300" height="300"></div>
-					<div id="citytext">
+				<a class="btn" href="#<%= arry.get(i).getCityname() %>"> 
+					<div  class="img"><img src="./img/<%= arry.get(i).getCityname() %>.jpg" width="300" height="300"></div> <!-- 도시 이미지 -->
+					<div id="citytext"> <!-- 도시 이름 -->
 						<div><b><%= arry.get(i).getCityname() %></b></div>
-				   	 <div><%= arry.get(i).getCityinfo() %></div>
+				   	 	<div><%= arry.get(i).getCityinfo() %></div>
 					</div>
 				</a>
 			</div>
 		</div>
-		<div class="modal" id="<%= arry.get(i).getCityname() %>" style="max-width:90%; height:60%; padding: 0;">	
+		<!-- 도시 이미지 클릭했을 때 뜨는 창 -->
+		<div class="modal" id="<%= arry.get(i).getCityname() %>" style="max-width:90%; height:60%; padding: 0;"> 
 			<div id="cityWrap2" class="modal_body">
 				<div id="cityImage2"><img src="./img/<%= arry.get(i).getCityname() %>.jpg"></div>
 				<div id="cityText">
@@ -66,7 +67,7 @@
       		event.preventDefault();
  
       		$(this).modal({
-        	fadeDuration: 250
+        	fadeDuration: 250 /* 모달 뜨는 속도 */
      		});
   		});
 	</script>	

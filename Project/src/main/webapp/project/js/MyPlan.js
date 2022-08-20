@@ -11,9 +11,9 @@ var infoGo = function(name) {
 };
 
 
-function deleteList(ths){
+function deleteList(ths){ 
     var ths = $(ths);
-    
+    /*this의 부모 삭제*/
     ths.parents(".planInsert_size").remove();
 	
 }
