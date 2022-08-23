@@ -87,7 +87,10 @@
 }
 .icon {
 	display: inline-block;
-	padding-top: 30px;
+	padding-top: 20px;
+}
+.icon div {
+	padding-top: 10px;
 }
 #cityInfo {
 	display: flex;

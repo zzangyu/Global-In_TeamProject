@@ -16,17 +16,15 @@
 <meta charset="UTF-8">
 <title>My Plan</title>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script> <!-- 구글맵 스트립트 -->
-
 <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script> <!-- JQuery -->
 <link rel="stylesheet" type="text/css" href="css/MyPlan.css" />
 <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@700&display=swap" rel="stylesheet"> <!-- 폰트 -->
 <script src="https://kit.fontawesome.com/e14a2b80fa.js" crossorigin="anonymous"></script> <!-- 폰트어썸 아이콘 -->
-<!-- daterangepicker -->
+<!-- daterangepicker -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-
 </head>
 <body>
 <form action="updateProc.jsp" method="post" name="updateForm"> <!-- 정보를 보내기 위해 form 생성 -->
@@ -48,31 +46,8 @@
 						<div class="border1"></div>
 					</div>
 					<div id="planInsert"> <!-- 이 나라들이 부분에 추가됨 -->
-						<input type="text" class="demoBefore<%= i %>" name="bfsche<%= i+1%>"/> <!-- daterangepicker 불러오기 위한 input -->
-						<script type="text/javascript">
-							$(function () { /* daterangepicker 초기설정 */
-    							$('input[name=bfsche<%= i+1 %>]').daterangepicker({
-        							"locale": {
-            							"format": "YYYY-MM-DD",
-            							"separator": " ~ ",
-            							"applyLabel": "확인",
-            							"cancelLabel": "취소",
-            							"fromLabel": "From",
-            							"toLabel": "To",
-            							"customRangeLabel": "Custom",
-            							"weekLabel": "W",
-            							"daysOfWeek": ["일", "월", "화", "수", "목", "금", "토"],
-            							"monthNames": ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
-            							"firstDay": 1
-       								},
-        							"startDate": "<%= arry.get(i).getSave_schedule()%>",
-        							<%-- "endDate": "<%= %>", --%>
-        							"drops": "down"
-    							}, function (start, end, label) {
-        							console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
-    								});
-							});
-						</script>
+						<input type="text" class="demo" name="bfsche<%= i+1%>" onclick="check()"/> <!-- daterangepicker 불러오기 위한 input -->
+						<script type="text/javascript" src="js/date.js"></script>
 						<div><%= arry.get(i).getSave_city_eng()%></div>
 						<div class="insertPlanInfo"><%= arry.get(i).getSave_city_kor()%></div>
 						<div class="listClose" onclick="deleteList(this)">삭제</div>
@@ -130,7 +105,6 @@ function initMap() {
  		<%
   		}
 		%>
-
     ];
   	
   	var infowindow = new google.maps.InfoWindow(); /* 마커 눌렀을 때 나오는 창 */
@@ -200,11 +174,9 @@ function initMap() {
   		 		<%
   		  		}
   				%>
-
   		    ];
   		  	
   		  	var infowindow = new google.maps.InfoWindow(); /* 마커 눌렀을 때 나오는 창 */
-
   		  	var infoclose = true; /* 마커 눌렀을 때 나오는 창 닫기 위해 만든 boolean*/
   			// Create markers.
   		    for (let i = 0; i < features.length; i++) {
@@ -233,7 +205,6 @@ function initMap() {
   		        })(marker, i)); /* 얜 모름; */
   		        
   		  	}
-
   	});
 }
 </script>
@@ -245,13 +216,12 @@ function initMap() {
 		for(int i = 0; i < arry2.size(); i++){
 	%>	
 		if(name === '<%= arry2.get(i).getCityname() %>'){
-			document.getElementById("plan_cities").innerHTML += "<div class='planInsert_size'><input type='hidden' name='count' value='"+count+"'><input type='hidden' name='idCheck' value='<%= idCheck%>'><input type='hidden' name='cityEn"+count+"' value='<%= arry2.get(i).getCityname()%>'><input type='hidden' name='cityKr"+count+"' value='<%= arry2.get(i).getCityinfo()%>'><div id='borderWrap'><div class='border1'></div><div id='border2'></div><div class='border1'></div></div><div id='planInsert'><input type='text' class='demo' name='sche"+count+"' )/><div><%= arry2.get(i).getCityname()%></div><div class='insertPlanInfo'><%= arry2.get(i).getCityinfo()%></div><div class='listClose' onclick='deleteList(this)'>삭제</div></div></div>";			
+			document.getElementById("plan_cities").innerHTML += "<div class='planInsert_size'><input type='hidden' name='count' value='"+count+"'><input type='hidden' name='idCheck' value='<%= idCheck%>'><input type='hidden' name='cityEn"+count+"' value='<%= arry2.get(i).getCityname()%>'><input type='hidden' name='cityKr"+count+"' value='<%= arry2.get(i).getCityinfo()%>'><div id='borderWrap'><div class='border1'></div><div id='border2'></div><div class='border1'></div></div><div id='planInsert'><input type='text' class='demo' name='sche"+count+"' /><div><%= arry2.get(i).getCityname()%></div><div class='insertPlanInfo'><%= arry2.get(i).getCityinfo()%></div><div class='listClose' onclick='deleteList(this)'>삭제</div></div></div>";			
 			count++; /* plan_cities에 추가 했으면 count 증가 */
 			<% count2++;%>
 		}
-
 	$(function check() {
-	    $('input[name=sche<%= count2%>]').daterangepicker({
+	    $('.demo').daterangepicker({
 	        "locale": {
 	            "format": "YYYY-MM-DD",
 	            "separator": " ~ ",
