@@ -64,7 +64,7 @@
 		</div>
 	<script type="text/javascript">	
     	$('a[href="#<%= arry.get(i).getCityname() %>"]').click(function(event) {
-      		event.preventDefault();
+      		event.preventDefault();	
  
       		$(this).modal({
         	fadeDuration: 250 /* 모달 뜨는 속도 */

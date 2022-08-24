@@ -34,6 +34,18 @@
 	width: 100%;
 	overflow: auto;
 }
+#labelBox {
+	padding: 5% 0 5% 20%;
+	margin: 0 10px;
+	border-bottom: 1px solid #ccc;
+}
+#labelBox div {
+	padding-left: 10px;
+}
+#labelBox input {
+	border: 2px solid #ccc;
+	padding: 2px 0 0 10px;
+}
 .planInsert_size {
 	display: flex;
 	width: 92%;
@@ -83,7 +95,6 @@
 	color: white;
 }
 .insertPlanInfo {
-	display: inline-block;
 }
 
 /* 검색 */

@@ -1,5 +1,5 @@
 var check = $(function () { /* daterangepicker 초기설정 */
-    $('.demo').daterangepicker({
+    $('#dateRange').daterangepicker({
     	"locale": {
     	"format": "YYYY-MM-DD",
     	"separator": " ~ ",
