@@ -94,8 +94,6 @@
 	background-color: #999;
 	color: white;
 }
-.insertPlanInfo {
-}
 
 /* 검색 */
 #searchBtn {
@@ -140,7 +138,7 @@
   z-index: 1;
   right: 0;
 }
-.insertPlan {
+.insertPlan {                         
 	display: inline-block;
 	position: absolute;
 	top: 23px;
@@ -151,6 +149,9 @@
 	border-radius: 5px;
 	border: 2px solid black;
 	background-color: white;
+}
+.insertPlanInfo {
+	display: inline-block;
 }
 .placeInfo{
 	width: 255px;

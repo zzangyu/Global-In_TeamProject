@@ -34,11 +34,6 @@
 		<button id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></button> <!-- 검색창 버튼 -->
 		<div id="plan"> <!-- 일정 div -->
 			<div id="plan_cities">
-				<div id="labelBox">
-					<div><label>날짜를 선택해주세요.</label></div>
-					<input type="text" id="dateRange" name="dateRange" onclick="check()"/> <!-- daterangepicker 불러오기 위한 input -->
-				</div>
-				<script type="text/javascript" src="js/date.js"></script>
 				<% for(int i = 0; i< arry.size(); i++) {%> <!-- 저장됐던 나라들을 미리 화면에 보여주기 위한 for문 -->
 				<div class="planInsert_size">
 					<input type="hidden" name="idCheck" value="<%= idCheck%>"> 
@@ -51,24 +46,33 @@
 						<div class="border1"></div>
 					</div>
 					<div id="planInsert"> <!-- 이 나라들이 부분에 추가됨 -->
+						<input type="text" class="demoBefore<%= i %>" name="bfsche<%= i+1%>"/> <!-- daterangepicker 불러오기 위한 input -->
+						<script type="text/javascript">
+							$(function () { /* daterangepicker 초기설정 */
+    							$('input[name=bfsche<%= i+1 %>]').daterangepicker({
+        							"locale": {
+            							"format": "YYYY-MM-DD",
+            							"separator": " ~ ",
+            							"applyLabel": "확인",
+            							"cancelLabel": "취소",
+            							"fromLabel": "From",
+            							"toLabel": "To",
+            							"customRangeLabel": "Custom",
+            							"weekLabel": "W",
+            							"daysOfWeek": ["일", "월", "화", "수", "목", "금", "토"],
+            							"monthNames": ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+            							"firstDay": 1
+       								},
+        							"startDate": "<%= arry.get(i).getSave_schedule()%>",
+        							<%-- "endDate": "<%= %>", --%>
+        							"drops": "down"
+    							}, function (start, end, label) {
+        							console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+    								});
+							});
+						</script>
 						<div><%= arry.get(i).getSave_city_eng()%></div>
 						<div class="insertPlanInfo"><%= arry.get(i).getSave_city_kor()%></div>
-						<select name="bfsche<%= i+1%>">
-							<option>당일치기</option>
-							<option>1박2일</option>
-							<option>2박3일</option>
-							<option>3박4일</option>
-							<option>4박5일</option>
-							<option>5박6일</option>
-							<option>6박7일</option>
-							<option>7박8일</option>
-							<option>8박9일</option>
-							<option>9박10일</option>
-							<option>10박11일</option>
-							<option>11박12일</option>
-							<option>12박13일</option>
-							<option>13박14일</option>
-						</select>
 						<div class="listClose" onclick="deleteList(this)">삭제</div>
 					</div>
 				</div>
@@ -229,21 +233,40 @@ function initMap() {
 </script>
 <script type="text/javascript">
 	var count = 1;	/* 정보를 보낼때 name을 구분해주기 위해 count라는 변수 선언 */
+	<% int count2 = 0;%>
 	var sendValue = function(name) {
 	<%
 		for(int i = 0; i < arry2.size(); i++){
 	%>	
 		if(name === '<%= arry2.get(i).getCityname() %>'){
-			document.getElementById("plan_cities").innerHTML += "<div class='planInsert_size'><input type='hidden' name='count' value='"+count+"'><input type='hidden' name='idCheck' value='<%= idCheck%>'><input type='hidden' name='cityEn"+count+"' value='<%= arry2.get(i).getCityname()%>'><input type='hidden' name='cityKr"+count+"' value='<%= arry2.get(i).getCityinfo()%>'><div id='borderWrap'><div class='border1'></div><div id='border2'></div><div class='border1'></div></div><div id='planInsert'><div><%= arry2.get(i).getCityname()%></div><div class='insertPlanInfo'><%= arry2.get(i).getCityinfo()%></div>"
-																+"<div style='display:inline-block;'><select name='sche"+count+"'><option>당일치기</option><option>1박2일</option><option>2박3일</option><option>3박4일</option><option>4박5일</option><option>5박6일</option><option>6박7일</option><option>7박8일</option><option>8박9일</option><option>9박10일</option><option>10박11일</option><option>11박12일</option><option>12박13일</option><option>13박14일</option></select></div>"
-																+"<div class='listClose' onclick='deleteList(this)'>삭제</div></div></div>";			
+			document.getElementById("plan_cities").innerHTML += "<div class='planInsert_size'><input type='hidden' name='count' value='"+count+"'><input type='hidden' name='idCheck' value='<%= idCheck%>'><input type='hidden' name='cityEn"+count+"' value='<%= arry2.get(i).getCityname()%>'><input type='hidden' name='cityKr"+count+"' value='<%= arry2.get(i).getCityinfo()%>'><div id='borderWrap'><div class='border1'></div><div id='border2'></div><div class='border1'></div></div><div id='planInsert'><input type='text' class='demo' name='sche"+count+"' )/><div><%= arry2.get(i).getCityname()%></div><div class='insertPlanInfo'><%= arry2.get(i).getCityinfo()%></div><div class='listClose' onclick='deleteList(this)'>삭제</div></div></div>";			
 			count++; /* plan_cities에 추가 했으면 count 증가 */
+			<% count2++;%>
 		}
-<%
+	$(function check() {
+	    $('input[name=sche<%= count2%>]').daterangepicker({
+	        "locale": {
+	            "format": "YYYY-MM-DD",
+	            "separator": " ~ ",
+	            "applyLabel": "확인",
+	            "cancelLabel": "취소",
+	            "fromLabel": "From",
+	            "toLabel": "To",
+	            "customRangeLabel": "Custom",
+	            "weekLabel": "W",
+	            "daysOfWeek": ["일", "월", "화", "수", "목", "금", "토"],
+	            "monthNames": ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+	            "firstDay": 1
+	        },
+	        "drops": "down"
+	    }, function (start, end, label) {
+	        console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+	    });
+	});
+	<%
+		}
+	%>
 	}
-%>
-	}
-	
 </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCY1oDgXTf55jiJBGLsiTsCgf9DyrlU66E&libraries=places&callback=initMap&v=weekly" defer></script>
