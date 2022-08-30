@@ -74,3 +74,8 @@ function SearchEurope() {
 	}
 };
 
+function fnMove(){
+    var offset = $("#submitBtn").offset();
+    $('html, body').animate({scrollTop : offset.top-100}, 400);
+};
+

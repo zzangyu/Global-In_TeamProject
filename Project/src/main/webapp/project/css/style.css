@@ -59,18 +59,18 @@
 }
 
 
-  .mainwrap {
+.mainwrap {
     margin-top: 70px;
-  }
-  .mainwrap div {
+}
+.mainwrap div {
     width: 800px;
     height: 600px;
     background-color: black;
     -wedkit-clip-path :polygon(50%0%,100%50%,50%100%,0%50%);
     clip-path: polygon(50%0%,100%50%,50%100%,0%50%);
-  }
+}
 
-  #hi {
+#hi {
     position: absolute; 
     z-index: 3;
     left: 600px;
@@ -78,4 +78,4 @@
     width: 100px;
     height: 100px;
     background-color: red;
-  }
+}

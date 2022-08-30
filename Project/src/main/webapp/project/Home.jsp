@@ -5,9 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/home.css">
-<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script> <!--jquery사용 -->
 <link rel ="shortcut icon" href="#">
 <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script> <!--jquery사용 -->
+<script type="text/javascript" src="js/CityInfo.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -30,7 +31,7 @@
         <div class="menu_wrap">
             <ul class="dep1">
                 <li>
-                    <a href="">아시아</a>
+                    <span>아시아</span>
                     <ul class="dep2">
                         <li><a href="">한국</a></li>
                         <li><a href="">일본</a></li>
@@ -41,7 +42,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="">아메리카</a>
+                    <span>아메리카</span>
                     <ul class="dep2">
                         <li><a href="">미국(동)</a></li>
                         <li><a href="">미국(서)</a></li>
@@ -52,7 +53,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="">유럽</a>
+                    <span>유럽</span>
                     <ul class="dep2">
                         <li><a href="">영국</a></li>
                         <li><a href="">프랑스</a></li>
@@ -63,7 +64,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="">게시판</a>
+                    <span>게시판</span>
                     <ul class="dep2">
                         <li><a href="">공지사항</a></li>
                         <li><a href="">자유게시판</a></li>
@@ -74,7 +75,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="">내일정</a>
+                    <span>내일정</span>
                     <ul class="dep2">
                     	<li><a href="">일정만들기</a></li>
                     	<li><a href="">준비물챙기기</a></li>
@@ -87,24 +88,18 @@
             </ul>
         </div>
         <div class="nav">
-                
                 <a href="#"><img src="images/free-icon-join-7988870.png" width="50px" height="50px"></a>
-                <a href="#"><img src="images/free-icon-join-7988870.png" width="50px" height="50px"></a>
-                         
         </div>
     </div>
        
     <div class="mediafilm">
-        <video width="100%" height="500px" autoplay loop>
-        	 <source src="images/cityVideo.mp4" type="video/mp4">
-        </video>
+        <video src="images/cityVideo.mp4" width="100%" height="500px" autoplay loop></video>
     </div>
         
     <div class="button_container">
-        <button class="startBtn"><span>시작하기!</span></button>
+        <button class="startBtn" onclick="fnMove()"><span>시작하기!</span></button>
     </div>
-
+	
 </div>
-
 </body>
 </html>
