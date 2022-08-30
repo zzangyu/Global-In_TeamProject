@@ -5,7 +5,7 @@
     <jsp:useBean id="dao2" class="com.dbcp.DBCP" scope="page" />
     <% 
     	String id = "han"; // 임의로 지정 => session으로 받을 예정
-    	String idCheck = "2han8"; // 임의로 지정 => 마이페이지 완성되면 변경
+    	String idCheck = "7han5"; // 임의로 지정 => 마이페이지 완성되면 변경
     	List<SaveCityVO> arry = dao.getCity(idCheck, id); // 저장되어 있던 나라들 호출
     %>
     <% List<CityVO> arry2 = dao2.getCity(); // 도시 전체 호출 %> 
@@ -19,6 +19,7 @@
 <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script> <!-- JQuery -->
 <link rel="stylesheet" type="text/css" href="css/MyPlan.css" />
 <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@700&display=swap" rel="stylesheet"> <!-- 폰트 -->
+<link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@700&family=Gowun+Dodum&display=swap" rel="stylesheet">
 <script src="https://kit.fontawesome.com/e14a2b80fa.js" crossorigin="anonymous"></script> <!-- 폰트어썸 아이콘 -->
 <!-- daterangepicker -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>

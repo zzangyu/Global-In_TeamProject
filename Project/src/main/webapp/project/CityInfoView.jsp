@@ -5,15 +5,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<%@ include file="Home.jsp" %>
 <title>메롱</title>
 <link href="css/CityInfo.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@700&family=Gowun+Dodum&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 <script src="https://kit.fontawesome.com/e14a2b80fa.js" crossorigin="anonymous"></script>
 </head>
 <body>
-	<div id="cityContainer">
+	<div id="cityContain-er">
 		<div id="Search">
 			<form action="CityInfoSearch.jsp">
 				<div id="submitBtn">
@@ -22,10 +24,10 @@
 				</div>
 			</form>
 				<div class="menu"> <!-- 클릭 된 곳에 파란색 background-color 고정하기 위해 onclick 이벤트 부여 -->
-					<button class="menu-link" onclick="SearchAll()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+					<button class="menu-link" onclick="SearchAll()">&nbsp;&nbsp;&nbsp;All&nbsp;&nbsp;&nbsp;</button>
 					<button class="menu-link" onclick="SearchAsia()">&nbsp;&nbsp;&nbsp;Asia&nbsp;&nbsp;&nbsp;</button>
 					<button class="menu-link" onclick="SearchAmerica()">America</button>
-					<button class="menu-link" onclick="SearchEurope()">Europe</button>
+					<button class="menu-link" onclick="SearchEurope()">&nbsp;Europe&nbsp;</button>
 				</div>
 		</div>
 

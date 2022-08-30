@@ -1,5 +1,8 @@
 @charset "UTF-8";
 /* 기본 틀 */
+* {
+	font-family: 'Gowun Dodum', sans-serif;
+}
 #cityContainer {
 	width: 100%;
 }
