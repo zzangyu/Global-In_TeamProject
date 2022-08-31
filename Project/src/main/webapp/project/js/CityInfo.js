@@ -76,6 +76,10 @@ function SearchEurope() {
 
 function fnMove(){
     var offset = $("#submitBtn").offset();
-    $('html, body').animate({scrollTop : offset.top-100}, 400);
+    $('html, body').animate({scrollTop : offset.top-100}, 1000);
+};
+function topMove(){
+    var offset = $("#submitBtn").offset();
+    $('html, body').animate({scrollTop : offset.top-800}, 1000);
 };
 

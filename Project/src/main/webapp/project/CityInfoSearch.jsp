@@ -30,6 +30,9 @@
 					<button class="menu-link" onclick="location.href='CityInfoView.jsp'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
 				</div>
 		</div>
+		<div id="top_btn">
+			<i class="fa-solid fa-circle-chevron-up fa-2x"></i>
+		</div>
 	<jsp:useBean id="dao" class="com.dbcp.DBCP" scope="page" />
 	<%	
 		boolean check = false;

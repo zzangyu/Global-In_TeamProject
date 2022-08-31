@@ -5,13 +5,14 @@
 }
 #cityContainer {
 	width: 100%;
+	background: linear-gradient(rgba(255,255,255,0.5),rgba(255,255,255,0.5)),url(../images/clouds.jpg);
+    background-attachment: fixed;
 }
 
 /* placehoder 위치 */
 ::-webkit-input-placeholder {
    text-align: center;
 }
-
 /* 검색 기능 */
 #Search {
 	display: flex;
@@ -22,15 +23,16 @@
 }
 #submitBtn button{
 	border: none;
-	background-color: white;
+	background-color: #0000;
 }
 .menu-link{
-	background-color: white;
+	background-color: #0000;
 	padding: 5px;
 	margin: 25px 5px;
 	font-size: 20px;
 	color: rgb(43, 43, 43);
 	border: none;
+	font-weight: bold;
 }
 .menu {
 	margin-bottom: 20px;
@@ -47,7 +49,13 @@
 	border-radius: 10px;
 	padding-left: 20px;
 }
-
+#top_btn{
+	position: fixed;
+	display: inline-block;
+	z-index: 3;
+	right: 0.8%;
+	bottom: 25px;
+}
 /* 도시 정보 화면 */
 .btn-open-popup {
 	display: inline-block;	

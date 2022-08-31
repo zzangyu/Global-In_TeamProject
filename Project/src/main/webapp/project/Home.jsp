@@ -78,7 +78,7 @@
                 <li>
                     <span>내일정</span>
                     <ul class="dep2">
-                    	<li><a href="">일정만들기</a></li>
+                    	<li><a href="MyPlan_Click.jsp">일정만들기</a></li>
                     	<li><a href="">준비물챙기기</a></li>
                     	<li><a href="">&nbsp;</a></li>
                     	<li><a href="">&nbsp;</a></li>
@@ -92,7 +92,6 @@
     <%-- <% if(session어쩌고) { %> --%>
            <!-- <a href="#"><i class="fa-solid fa-user"></i></a> -->
     <%-- <% } else { %> --%>
-            <div id="signUp_Btn"><a href="#">회원가입</a></div>
             <div id="login_Btn"><a href="#">로그인</a></div>
     <%-- <% } %> --%>
         </div>
@@ -105,7 +104,6 @@
     <div class="button_container">
         <button class="startBtn" onclick="fnMove()"><span>시작하기!</span></button>
     </div>
-	
 </div>
 </body>
 </html>

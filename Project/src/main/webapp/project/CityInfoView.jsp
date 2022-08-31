@@ -23,12 +23,15 @@
 					<button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button> <!-- 돋보기 아이콘 -->
 				</div>
 			</form>
-				<div class="menu"> <!-- 클릭 된 곳에 파란색 background-color 고정하기 위해 onclick 이벤트 부여 -->
+			<div class="menu"> <!-- 클릭 된 곳에 파란색 background-color 고정하기 위해 onclick 이벤트 부여 -->
 					<button class="menu-link" onclick="SearchAll()">&nbsp;&nbsp;&nbsp;All&nbsp;&nbsp;&nbsp;</button>
 					<button class="menu-link" onclick="SearchAsia()">&nbsp;&nbsp;&nbsp;Asia&nbsp;&nbsp;&nbsp;</button>
 					<button class="menu-link" onclick="SearchAmerica()">America</button>
 					<button class="menu-link" onclick="SearchEurope()">&nbsp;Europe&nbsp;</button>
-				</div>
+			</div>
+		</div>
+		<div id="top_btn">
+			<i onclick="topMove()" class="fa-solid fa-circle-chevron-up fa-2x"></i>
 		</div>
 
 	<jsp:useBean id="dao" class="com.dbcp.DBCP" scope="page" />
