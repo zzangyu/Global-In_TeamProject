@@ -50,11 +50,8 @@ a {
 }
 .menu_wrap {
     flex: 70%;
-    padding-left: 10%;
-} 
-.menu_wrap .dep1 {
-    font-size: 0;
-    background-color: white;
+    display: flex;
+    justify-content: center; 
 }
 .menu_wrap .dep1 > li {
     display: table-cell;
@@ -76,6 +73,7 @@ a {
 }
 .menu_wrap .dep1 > li:hover > .dep2 {
     display: block;
+    background-color: white;
 }
 .menu_wrap .dep1 > li > .dep2:hover > li {
     display: block;
@@ -91,7 +89,6 @@ a {
     font-size: 16px;
 }
 .menu_wrap .dep2 a:hover {
-    /* text-decoration: underline; */
     color: #999;
 }
 .mediafilm {

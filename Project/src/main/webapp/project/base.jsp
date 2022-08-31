@@ -27,7 +27,7 @@
     	window.addEventListener('scroll',scrollFunc);
     </script>
         <div class="logo">
-        	<h1><a href="#">LOGO</a></h1>
+        	<h1><a href="CityInfoView.jsp">LOGO</a></h1>
         </div>
         <div class="menu_wrap">
             <ul class="dep1">
@@ -63,14 +63,6 @@
             <div id="login_Btn"><a href="#">로그인</a></div>
     <%-- <% } %> --%>
         </div>
-    </div>
-       
-    <div class="mediafilm">
-        <video src="images/cityVideo.mp4" width="100%" height="500px" autoplay loop></video>
-    </div>
-        
-    <div class="button_container">
-        <button class="startBtn" onclick="fnMove()"><span>시작하기!</span></button>
     </div>
 </div>
 </body>

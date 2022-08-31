@@ -101,7 +101,7 @@
 	padding-top: 20px;
 }
 .icon div {
-	padding-top: 10px;
+	padding-top: 20px;
 }
 #cityInfo {
 	display: flex;
@@ -125,13 +125,14 @@
 	line-height: 1em;
 }
 #cityWrap2 > div > h1 {
-	padding-top: 25px;
+	padding-top: 50px;
 	padding-bottom: 0;
 	margin-bottom: 10px;
 	text-align: left;
 	line-height: 1em;
 }
 #cityWrap2 > div > p {
+	padding-top: 20px;
 	text-align: left;
 	line-height: 1.5em;
 	color: #999;
