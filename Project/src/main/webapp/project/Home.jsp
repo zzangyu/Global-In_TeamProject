@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@700&family=Gowun+Dodum&display=swap" rel="stylesheet">
 <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script> <!--jquery사용 -->
 <script type="text/javascript" src="js/CityInfo.js"></script>
+<script src="https://kit.fontawesome.com/e14a2b80fa.js" crossorigin="anonymous"></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -37,7 +38,7 @@
                         <li><a href="">일본</a></li>
                         <li><a href="">중국</a></li>
                         <li><a href="">대만</a></li>
-                        <li><a href="">홍콩&마카오</a></li>
+                        <li><a href="">홍콩 마카오</a></li>
                         <li><a href="">&nbsp;</a></li>
                     </ul>
                 </li>
@@ -88,7 +89,12 @@
             </ul>
         </div>
         <div class="nav">
-                <a href="#"><img src="images/free-icon-join-7988870.png" width="50px" height="50px"></a>
+    <%-- <% if(session어쩌고) { %> --%>
+           <!-- <a href="#"><i class="fa-solid fa-user"></i></a> -->
+    <%-- <% } else { %> --%>
+            <div id="signUp_Btn"><a href="#">회원가입</a></div>
+            <div id="login_Btn"><a href="#">로그인</a></div>
+    <%-- <% } %> --%>
         </div>
     </div>
        

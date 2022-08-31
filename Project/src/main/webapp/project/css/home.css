@@ -17,22 +17,23 @@
     background-color:white;
     text-align: center;
     padding-top: 10px;
+    z-index: 1;
 }
 .header {
 	border-bottom: 1px solid #ccc;
 }
 .header.on { 
     position: fixed; 
-    z-index: 1;
 }
 .header.on .inner {
 	height: 70px; 
 }
 .container .header .nav {
     flex: 15%;
-    justify-content: flex-end;
-    display: inline-block;
-    margin-top: 5px;
+    display: flex;
+    justify-content: space-around;
+	align-items: center;
+	padding-bottom: 10px;
 }
 .container .header .logo {
     flex: 15%;
@@ -76,6 +77,9 @@ a {
 .menu_wrap .dep1 > li:hover > .dep2 {
     display: block;
 }
+.menu_wrap .dep1 > li > .dep2:hover > li {
+    display: block;
+}
 .menu_wrap .dep2 {
     display: none;
     margin-top: 10px;
@@ -83,13 +87,18 @@ a {
 }
 .menu_wrap .dep2 a {
     text-align: center;
-    display: block;
     padding: 5px 0;
     font-size: 16px;
 }
 .menu_wrap .dep2 a:hover {
     /* text-decoration: underline; */
     color: #999;
+}
+#signUp_Btn {
+	padding-left: 25px;
+}
+#login_Btn {
+	padding-right: 40px;
 }
 .mediafilm {
     padding-top: 120px;
@@ -135,7 +144,7 @@ a {
     transform: translateX(-98%) translateY(-25%) rotate(45deg);
 }
   
-.btn:hover:after {
+.startBtn:hover:after {
     -webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
     transform: translateX(-9%) translateY(-25%) rotate(45deg);
 }
