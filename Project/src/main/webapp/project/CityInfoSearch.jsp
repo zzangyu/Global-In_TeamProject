@@ -6,6 +6,7 @@
 <head>
 <%@ include file="home.jsp" %>
 <meta charset="UTF-8">
+<%@ include file="Home.jsp" %>
 <title>Insert title here</title>
 <link href="css/CityInfo.css" rel="stylesheet" type="text/css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
@@ -30,6 +31,32 @@
 		</div>
 		<div id="top_btn">
 			<i class="fa-solid fa-circle-chevron-up fa-2x"></i>
+<<<<<<< HEAD
+=======
+		</div>
+	<jsp:useBean id="dao" class="com.dbcp.DBCP" scope="page" />
+	<%	
+		boolean check = false;
+		
+		List<CityVO> arry = dao.getCity();
+		for (int i = 0; i < arry.size(); i++) {
+	
+			if(arry.get(i).getCityinfo().contains(request.getParameter("userSearch"))){
+				
+				check = true; // 검색 결과가 있으면 true로 바꿔준다.
+				
+	%>
+	<div class="<%= arry.get(i).getBtn()%>">
+		<div class="btn-open-popup">	
+			<a class="btn" href="#<%= arry.get(i).getCityname() %>">
+				<div  class="img"><img src="./img/<%= arry.get(i).getCityname() %>.jpg" width="300" height="300"></div>
+				<div id="citytext">
+					<div><b><%= arry.get(i).getCityname() %></b></div>
+				    <div><%= arry.get(i).getCityinfo() %></div>
+				</div>	
+			
+			</a>
+>>>>>>> bc37c0f6ad98ad64e6d52604340b5acb83c4fd0e
 		</div>
 	<c:forEach var="arry" items="${arry}">
 		<c:set var="check" value="true" />
