@@ -1,5 +1,6 @@
-var infoGo = function(name) {
-    	const url="planCityInfo.jsp?check=y&name="+name; /* name값 넘겨주기 위해 url에 파라미터로 담아서 보냄*/
+var infoGo = function(names) {
+		var name = names;
+    	const url="cityPlan.do?cmd=planCityInfo&name="+name; /* name값 넘겨주기 위해 url에 파라미터로 담아서 보냄*/
 		var screenW = screen.availWidth;  // 스크린 가로사이즈
  		var screenH = screen.availHeight; // 스크린 세로사이즈
   		var popW = 800; // 띄울창의 가로사이즈

@@ -1,4 +1,4 @@
-package com.dbcp;
+package com.city.model;
 
 public class CityVO {
 	

@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.sql.*, com.dbcp.*, java.util.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
+<%@ include file="home.jsp"%>
 <meta charset="UTF-8">
-<%@ include file="Home.jsp" %>
 <title>메롱</title>
 <link href="css/CityInfo.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
@@ -17,7 +17,7 @@
 <body>
 	<div id="cityContainer">
 		<div id="Search">
-			<form action="CityInfoSearch.jsp">
+			<form action="cityPlan.do?cmd=cityInfoSearch" method="post">
 				<div id="submitBtn">
 					<input type="text" name="userSearch" id="userSearch" placeholder="나라-도시 검색"> <!-- 나라 & 도시 검섹 -->
 					<button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button> <!-- 돋보기 아이콘 -->
@@ -33,42 +33,38 @@
 		<div id="top_btn">
 			<i onclick="topMove()" class="fa-solid fa-circle-chevron-up fa-2x"></i>
 		</div>
-
-	<jsp:useBean id="dao" class="com.dbcp.DBCP" scope="page" />
-	<%
-		List<CityVO> arry = dao.getCity(); /* 내가 저장한 도시 가져오기 */
-		for (int i = 0; i < arry.size(); i++) {	/* 도시 길이만큼 for문 */
-	%>	
-		<div class="<%= arry.get(i).getBtn()%>"> <!-- 버튼 눌렀을때 display 설정하기 위해 class 속성 부여 -->
+	
+	<c:forEach var="arry" items="${arry}">
+		<div class="${arry.getBtn()}"> <!-- 버튼 눌렀을때 display 설정하기 위해 class 속성 부여 -->
 			<div class="btn-open-popup">
-				<a class="btn" href="#<%= arry.get(i).getCityname() %>"> 
-					<div  class="img"><img src="./img/<%= arry.get(i).getCityname() %>.jpg" width="300" height="300"></div> <!-- 도시 이미지 -->
+				<a class="btn" href="#${arry.getCityname()}">
+					<div  class="img"><img src="./img/${arry.getCityname()}.jpg" width="300" height="300"></div> <!-- 도시 이미지 -->
 					<div id="citytext"> <!-- 도시 이름 -->
-						<div><b><%= arry.get(i).getCityname() %></b></div>
-				   	 	<div><%= arry.get(i).getCityinfo() %></div>
+						<div><b>${arry.getCityname()}</b></div>
+				   	 	<div>${arry.getCityinfo()}</div>
 					</div>
 				</a>
 			</div>
 		</div>
 		<!-- 도시 이미지 클릭했을 때 뜨는 창 -->
-		<div class="modal" id="<%= arry.get(i).getCityname() %>" style="max-width:90%; height:60%; padding: 0;"> 
+		<div class="modal" id="${arry.getCityname()}" style="max-width:90%; height:60%; padding: 0;"> 
 			<div id="cityWrap2" class="modal_body">
-				<div id="cityImage2"><img src="./img/<%= arry.get(i).getCityname() %>.jpg"></div>
+				<div id="cityImage2"><img src="./img/${arry.getCityname()}.jpg"></div>
 				<div id="cityText">
-					<h1><%= arry.get(i).getCityname() %></h1>
-					<div><b><%= arry.get(i).getCityinfo() %></b></div>
-					<p><%= arry.get(i).getInfo() %></p>
+					<h1>${arry.getCityname()}</h1>
+					<div><b>${arry.getCityinfo()}</b></div>
+					<p>${arry.getInfo()}</p>
 					<div id="cityInfo">
-						<div class="icon"><div><i class="fa-solid fa-bolt"></i></div><div><%= arry.get(i).getVolt() %></div></div>
-						<div class="icon"><div><i class="fa-solid fa-clock-rotate-left"></i></div><div><%= arry.get(i).getHour() %></div></div>
-						<div class="icon"><div><i class="fa-solid fa-plane-departure"></i></div><div><%= arry.get(i).getTimedifference() %></div></div>
+						<div class="icon"><div><i class="fa-solid fa-bolt"></i></div><div>${arry.getVolt()}</div></div>
+						<div class="icon"><div><i class="fa-solid fa-clock-rotate-left"></i></div><div>${arry.getHour()}</div></div>
+						<div class="icon"><div><i class="fa-solid fa-plane-departure"></i></div><div>${arry.getTimedifference()}</div></div>
 					</div>
-					<div id="plan" onclick="location.href='MyPlan.jsp?lat=<%= arry.get(i).getLatitude()%>&lng=<%= arry.get(i).getLongitude()%>'">일정 만들기</div>
+					<div id="plan" onclick="location.href='cityPlan.do?cmd=myPlan&lat=${arry.getLatitude()}&lng=${arry.getLongitude()}'">일정 만들기</div>
 				</div>
 			</div>
 		</div>
 	<script type="text/javascript">	
-    	$('a[href="#<%= arry.get(i).getCityname() %>"]').click(function(event) {
+    	$('a[href="#${arry.getCityname()}"]').click(function(event) {
       		event.preventDefault();	
  
       		$(this).modal({
@@ -76,10 +72,7 @@
      		});
   		});
 	</script>	
-	<%
-		}
-		
-	%>
+	</c:forEach>
 	</div>
 	<script type="text/javascript" src="js/CityInfo.js"></script>
 	<script type="text/javascript" src="js/MyPlan.js"></script>
