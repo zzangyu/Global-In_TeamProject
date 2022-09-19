@@ -11,7 +11,7 @@
 <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script> <!--jquery사용 -->
 <script type="text/javascript" src="js/CityInfo.js"></script>
 <script src="https://kit.fontawesome.com/e14a2b80fa.js" crossorigin="anonymous"></script>
-<title>Insert title here</title>
+<title>준비물</title>
 </head>
 <body>
     <div id="mainContainer">

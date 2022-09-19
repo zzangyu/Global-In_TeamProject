@@ -27,7 +27,7 @@
     	window.addEventListener('scroll',scrollFunc);
     </script>
         <div class="logo">
-        	<h1><a href="#">LOGO</a></h1>
+        	<h1><a href="cityPlan.do?cmd=cityInfoView">LOGO</a></h1>
         </div>
         <div class="menu_wrap">
             <ul class="dep1">
@@ -49,8 +49,8 @@
                 <li>
                     <span>내일정</span>
                     <ul class="dep2">
-                    	<li><a href="MyPlan_Click.jsp">일정만들기</a></li>
-                    	<li><a href="necessity.jsp">준비물챙기기</a></li>
+                    	<li><a href="cityPlan.do?cmd=myPlanClick" target="_blank">일정만들기</a></li>
+                    	<li><a href="cityPlan.do?cmd=necessity">준비물챙기기</a></li>
                     	<li>&nbsp;</li>
                     </ul>
                 </li>

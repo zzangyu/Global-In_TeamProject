@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="css/base.css">
 <link rel ="shortcut icon" href="#">
 <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@700&family=Gowun+Dodum&display=swap" rel="stylesheet">
 <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script> <!--jquery사용 -->
@@ -27,7 +27,7 @@
     	window.addEventListener('scroll',scrollFunc);
     </script>
         <div class="logo">
-        	<h1><a href="CityInfoView.jsp">LOGO</a></h1>
+        	<h1><a href="cityPlan.do?cmd=cityInfoView">LOGO</a></h1>
         </div>
         <div class="menu_wrap">
             <ul class="dep1">
@@ -49,8 +49,8 @@
                 <li>
                     <span>내일정</span>
                     <ul class="dep2">
-                    	<li><a href="MyPlan_Click.jsp">일정만들기</a></li>
-                    	<li><a href="necessity.jsp">준비물챙기기</a></li>
+                    	<li><a href="cityPlan.do?cmd=myPlanClick" target="_blank">일정만들기</a></li>
+                    	<li><a href="cityPlan.do?cmd=necessity">준비물챙기기</a></li>
                     	<li>&nbsp;</li>
                     </ul>
                 </li>

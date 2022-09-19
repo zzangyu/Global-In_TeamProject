@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.sql.*, com.dbcp.*, java.util.*"%>
-    <jsp:useBean id="dao" class="com.dbcp.DBCP" scope="page" />
-    <% List<CityVO> arry = dao.getCity(); %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +21,7 @@
 
 </head>
 <body>
-<form action="saveProc.jsp" method="post" name="saveForm">
+<form action="cityPlan.do?cmd=saveProc" method="post" name="saveForm">
 	<div id="mapWrap">
 		<div id="hello">Let's &nbsp;make &nbsp;a &nbsp;plan</div>
 		<input id="input" type="text" name="userSearch" placeholder="도시를 입력해주세요. 엔터x"> <!-- 검색창 -->
@@ -38,24 +36,15 @@
 <script type="text/javascript" src="js/MyPlan.js"></script>
 <!-- google map key, 맵 구현 -->
 <script type="text/javascript">
-	<% /* 왜인지 모르겠는데 name만 전역변수로 선언 해줘야됨.. */
-	for(int i = 0; i < arry.size(); i++) {
-	%>
-		var <%= arry.get(i).getCityname()%> = "<%= arry.get(i).getCityname()%>";
-	<%
-		}
-	%>
+	<c:forEach var="arry" items="${arry}">
+		var ${arry.getCityname()} = "${arry.getCityname()}";
+	</c:forEach>
 	
 function initMap() {
-    const urlParams = new URL(location.href).searchParams; /* url 읽어오기 */
-	const latStr = urlParams.get('lat'); /* url에서 lat 파라미터 값 읽기 */
-	const lngStr = urlParams.get('lng'); /* url에서 lon 파라미터 값 읽기 */
-	var lats = parseInt(latStr); /* 문자->인트형으로 형변환 */
-	var lngs = parseInt(lngStr); /* 문자->인트형으로 형변환 */
 	
  	var map = new google.maps.Map(document.getElementById("map"), { /* 맵 열기 */
   	 	mapId: "4d7ece8ee77fe4c0", /* 커스텀 맵 id (내가 지정한대로) */
-    	center: { lat: lats, lng: lngs },
+    	center: { lat: 48.85, lng: 2.35 },
     	zoom: 6, /* 실행되었을때 확대 정도 */
 		panControl: false, /* 기본 설정들 off */
   		zoomControl: false,
@@ -72,18 +61,13 @@ function initMap() {
     };
 	
   	var features = [ /* marker에 대한 정보들 설정 */
-		<%
-  		for(int i = 0; i < arry.size(); i++) { /* 마커 전체에 넣어야돼서 for문 이용 */
-		%>
-  	
-  						{
-  	      					position: new google.maps.LatLng(<%= arry.get(i).getLatitude()%>, <%= arry.get(i).getLongitude()%>), /* 마커 위치 */
+	<c:forEach var="arry" items="${arry}">
+ 						{
+  	      					position: new google.maps.LatLng(${arry.getLatitude()}, ${arry.getLongitude()}), /* 마커 위치 */
   	      					type: "info", /* 마커 아이콘 */
-   	      					place: '<div class="placeInfo"><div class="insertPlan" onclick="sendValue(<%= arry.get(i).getCityname() %>)" class="<%= arry.get(i).getCityname() %>">+</div><div class="placeInfo_img"><img src="./img/<%= arry.get(i).getCityname() %>.jpg"></div><div class="placeInfo_info"><b><%= arry.get(i).getCityinfo()%></b></div><div class="guideBook" onclick="infoGo(<%= arry.get(i).getCityname()%>)"><b>가이드북 📘</b></div></div>'
+   	      					place: '<div class="placeInfo"><div class="insertPlan" onclick="sendValue(${arry.getCityname()})" class="${arry.getCityname()}">+</div><div class="placeInfo_img"><img src="./img/${arry.getCityname()}.jpg"></div><div class="placeInfo_info"><b>${arry.getCityinfo()}</b></div><div class="guideBook" onclick="infoGo(${arry.getCityname()})"><b>가이드북 📘</b></div></div>'
   	    				},  /* 마커를 눌렀을 때 나오는 창 -> html 태그 이용해서 틀 만들기 */
- 		<%
-  		}
-		%>
+	</c:forEach>
     ];
   	
   	var infowindow = new google.maps.InfoWindow(); /* 마커 눌렀을 때 나오는 창 */
@@ -140,19 +124,14 @@ function initMap() {
   		    	},
   		    };
   			
-  		  	var features = [ /* marker에 대한 정보들 설정 */
-  				<%
-  		  		for(int i = 0; i < arry.size(); i++) { /* 마커 전체에 넣어야돼서 for문 이용 */
-  				%>
-  		  	
-  		  						{
-  		  	      					position: new google.maps.LatLng(<%= arry.get(i).getLatitude()%>, <%= arry.get(i).getLongitude()%>), /* 마커 위치 */
+  		var features = [ /* marker에 대한 정보들 설정 */
+  			<c:forEach var="arry" items="${arry}">
+  		 						{
+  		  	      					position: new google.maps.LatLng(${arry.getLatitude()}, ${arry.getLongitude()}), /* 마커 위치 */
   		  	      					type: "info", /* 마커 아이콘 */
-  		   	      					place: '<div class="placeInfo"><div class="insertPlan" onclick="sendValue(<%= arry.get(i).getCityname() %>)" class="<%= arry.get(i).getCityname() %>">+</div><div class="placeInfo_img"><img src="./img/<%= arry.get(i).getCityname() %>.jpg"></div><div class="placeInfo_info"><b><%= arry.get(i).getCityinfo()%></b></div><div class="guideBook" onclick="infoGo(<%= arry.get(i).getCityname()%>)"><b>가이드북 📘</b></div></div>'
+  		   	      					place: '<div class="placeInfo"><div class="insertPlan" onclick="sendValue(${arry.getCityname()})" class="${arry.getCityname()}">+</div><div class="placeInfo_img"><img src="./img/${arry.getCityname()}.jpg"></div><div class="placeInfo_info"><b>${arry.getCityinfo()}</b></div><div class="guideBook" onclick="infoGo(${arry.getCityname()})"><b>가이드북 📘</b></div></div>'
   		  	    				},  /* 마커를 눌렀을 때 나오는 창 -> html 태그 이용해서 틀 만들기 */
-  		 		<%
-  		  		}
-  				%>
+  			</c:forEach>
   		    ];
   		  	
   		  	var infowindow = new google.maps.InfoWindow(); /* 마커 눌렀을 때 나오는 창 */
@@ -190,16 +169,12 @@ function initMap() {
 <script type="text/javascript">
 	var count = 1;	
 	var sendValue = function(name) {
-	<%
-		for(int i = 0; i < arry.size(); i++){
-	%>	
-		if(name === '<%= arry.get(i).getCityname() %>'){
-			document.getElementById("plan_cities").innerHTML += "<div class='planInsert_size'><input type='hidden' name='count' value='"+count+"'><input type='hidden' name='cityEn"+count+"' value='<%= arry.get(i).getCityname()%>'><input type='hidden' name='cityKr"+count+"' value='<%= arry.get(i).getCityinfo()%>'><div id='borderWrap'><div class='border1'></div><div id='border2'></div><div class='border1'></div></div><div id='planInsert'><input type='text' class='demo' name='sche"+count+"'/><div><%= arry.get(i).getCityname()%></div><div class='insertPlanInfo'><%= arry.get(i).getCityinfo()%></div><div class='listClose' onclick='deleteList(this)'>삭제</div></div></div>";			
+	<c:forEach var="arry" items="${arry}">
+		if(name === '${arry.getCityname()}'){
+			document.getElementById("plan_cities").innerHTML += "<div class='planInsert_size'><input type='hidden' name='count' value='"+count+"'><input type='hidden' name='cityEn"+count+"' value='${arry.getCityname()}'><input type='hidden' name='cityKr"+count+"' value='${arry.getCityinfo()}'><div id='borderWrap'><div class='border1'></div><div id='border2'></div><div class='border1'></div></div><div id='planInsert'><input type='text' class='demo' name='sche"+count+"'/><div>${arry.getCityname()}</div><div class='insertPlanInfo'>${arry.getCityinfo()}</div><div class='listClose' onclick='deleteList(this)'>삭제</div></div></div>";			
 			count++;
 		}
-	<%
-		}
-	%>
+	</c:forEach>
 		$(function check() {
 	    	$(".demo").daterangepicker({
 	     	   "locale": {

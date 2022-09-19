@@ -1,4 +1,4 @@
-package com.dbcp;
+package com.city.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,27 +10,132 @@ import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-public class DBCPPlanCityInfo{
-	
-	DataSource ds;
-	
-	public DBCPPlanCityInfo() {
-		
-		try {
-			
-			Context initContext = new InitialContext();
-			ds = (DataSource)initContext.lookup("java:/comp/env/jdbc/myoracle");
-			
-		} catch (Exception e) {
+public class CityDAO{
 
-			System.out.println("DBCP ERROR");
-			
+	private static CityDAO instance = null;
+	
+	private CityDAO() {
+		
+	}
+	public static CityDAO getInstance() {
+		
+		if(instance == null) {
+			synchronized (CityDAO.class) {
+				instance = new CityDAO();
+			}
 		}
+		return instance;
 		
 	}
 	
+	private Connection getConnection() {
+		Connection conn = null;
+		try {
+			Context initContext = new InitialContext();
+			DataSource ds = (DataSource)initContext.lookup("java:/comp/env/jdbc/myoracle");
+			conn = ds.getConnection();
+		} catch (NamingException e) {
+			System.out.println("Naming Connection ERROR");
+			e.printStackTrace();
+		} catch (Exception e) {
+			System.out.println("Connection ERROR");
+			e.printStackTrace();
+		}
+		
+		return conn;
+	}
+	
+	public List<CityVO> getCity() {
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+		List<CityVO> arry = new ArrayList<CityVO>();
+		
+		try {
+			conn = getConnection();
+			
+			String strQuery = "select * from City order by num asc";
+			stmt = conn.createStatement();
+			
+			rs = stmt.executeQuery(strQuery);
+			
+			while(rs.next()) {
+				CityVO vo = new CityVO();
+				vo.setCityname(rs.getString("cityname"));
+				vo.setCityinfo(rs.getString("cityinfo"));
+				vo.setContinent(rs.getString("continent"));
+				vo.setLongitude(rs.getString("longitude"));
+				vo.setLatitude(rs.getString("latitude"));
+				vo.setInfo(rs.getString("info"));
+				vo.setVolt(rs.getString("volt"));
+				vo.setHour(rs.getString("hour"));
+				vo.setTimedifference(rs.getString("timedifference"));
+				vo.setBtn(rs.getString("btn"));
+				arry.add(vo);
+			}
+			
+		} catch (SQLException ss) {
+			System.out.println("sql Exception");
+		} catch (Exception e) {
+			System.out.println("Exception");
+		} finally {
+			if(conn != null) try{ conn.close(); }catch(SQLException s1){}
+			if(stmt != null) try{ stmt.close(); }catch(SQLException s2){}
+			if(rs != null) try{ rs.close(); }catch(SQLException s3){}
+		}	
+		
+		return arry;
+		
+	}
+	
+	public List<CityVO> getCitySearch(String str) {
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		List<CityVO> arry = new ArrayList<CityVO>();
+		
+		try {
+			conn = getConnection();
+			
+			String strQuery = "select * from City where cityinfo Like ?";
+			stmt = conn.prepareStatement(strQuery);
+			stmt.setString(1, "%"+str+"%");
+			rs = stmt.executeQuery();
+			while(rs.next()) {
+				CityVO vo = new CityVO();
+				vo.setCityname(rs.getString("cityname"));
+				vo.setCityinfo(rs.getString("cityinfo"));
+				vo.setContinent(rs.getString("continent"));
+				vo.setLongitude(rs.getString("longitude"));
+				vo.setLatitude(rs.getString("latitude"));
+				vo.setInfo(rs.getString("info"));
+				vo.setVolt(rs.getString("volt"));
+				vo.setHour(rs.getString("hour"));
+				vo.setTimedifference(rs.getString("timedifference"));
+				vo.setBtn(rs.getString("btn"));
+				arry.add(vo);
+			}
+			
+		} catch (SQLException ss) {
+			System.out.println("sql Exception");
+		} catch (Exception e) {
+			System.out.println("Exception");
+		} finally {
+			if(conn != null) try{ conn.close(); }catch(SQLException s1){}
+			if(stmt != null) try{ stmt.close(); }catch(SQLException s2){}
+			if(rs != null) try{ rs.close(); }catch(SQLException s3){}
+		}	
+		
+		return arry;
+		
+	}
+	
+
 	public List<PlanCityInfoVO> getPlanInfo() {
 		Connection conn = null;
 		Statement stmt = null;
@@ -39,7 +144,7 @@ public class DBCPPlanCityInfo{
 		List<PlanCityInfoVO> arry = new ArrayList<PlanCityInfoVO>();
 		
 		try {
-			conn = ds.getConnection();
+			conn = getConnection();
 			
 			String strQuery = "select * from plancityinfo";
 			stmt = conn.createStatement();
@@ -82,7 +187,7 @@ public class DBCPPlanCityInfo{
 		ResultSet rs = null;
 		List<String> saveCity_List = new ArrayList<String>();
 		try {			
-			conn = ds.getConnection();
+			conn = getConnection();
 			pstmt = conn.prepareStatement("select save_city_idCheck from saveCity where save_city_id=?");
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
@@ -110,7 +215,7 @@ public class DBCPPlanCityInfo{
 		ResultSet rs = null;
 		
 		try {			
-			conn = ds.getConnection();
+			conn = getConnection();
 			pstmt = conn.prepareStatement("insert into saveCity (save_city_id, save_city_idCheck, save_city_eng, save_city_kor, save_schedule) values (?, ?, ?, ?, ?)");
 			pstmt.setString(1, id);
 			pstmt.setString(2, idCheck);
@@ -136,7 +241,7 @@ public class DBCPPlanCityInfo{
 		
 		
 		try {
-			conn = ds.getConnection();
+			conn = getConnection();
 			
 			String strQuery = "select * from saveCity where save_city_idCheck=? and save_city_id=?";
 			pstmt = conn.prepareStatement(strQuery);
@@ -175,7 +280,7 @@ public class DBCPPlanCityInfo{
 		PreparedStatement pstmt = null;
 		
 		try {
-			conn = ds.getConnection();
+			conn = getConnection();
 			
 			String strQuery = "delete saveCity where save_city_idCheck=?";
 			pstmt = conn.prepareStatement(strQuery);
@@ -197,7 +302,7 @@ public class DBCPPlanCityInfo{
 		PreparedStatement pstmt = null;
 		
 		try {
-			conn = ds.getConnection();
+			conn = getConnection();
 			
 			String strQuery = "delete saveCity where save_city_idCheck=? and save_city_eng=?";
 			pstmt = conn.prepareStatement(strQuery);
@@ -220,7 +325,7 @@ public class DBCPPlanCityInfo{
 		PreparedStatement pstmt = null;
 		
 		try {
-			conn = ds.getConnection();
+			conn = getConnection();
 		
 			String strQuery = "insert into saveCity (save_city_id, save_city_idCheck, save_city_eng, save_city_kor, save_schedule) values (?,?,?,?,?)";
 			pstmt = conn.prepareStatement(strQuery);
@@ -241,4 +346,5 @@ public class DBCPPlanCityInfo{
 		}	
 		
 	}
+	
 }
