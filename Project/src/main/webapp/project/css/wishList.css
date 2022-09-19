@@ -2,6 +2,7 @@
 html, body {
 	width: 100%;
 	height: 100%;
+	Font-family: 'Gowun Dodum', sans-serif;
 }
 
 body {
@@ -9,6 +10,7 @@ body {
 	background-attachment: fixed;
 }
 
+/* ㅡㅡㅡㅡㅡㅡ 정보 ㅡㅡㅡㅡㅡㅡ */
 #wishList_container {
 	display: flex;
 	flex-direction: column;
@@ -16,18 +18,73 @@ body {
 	align-items: center;
 	width: 100%;
 	height: 60%;
-	background-color: red;
+	padding-top: 100px;
 }
-
+#firstWord_id, #nickname, #profile, #myPlan, #wishList {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 #firstWord_id {
 	width: 150px;
 	height: 150px;
 	border-radius: 50%;
-	background-color: white;
-	text-align: center;
+	font-size: 3em;
+	margin-bottom: 20px;
+	background-color: black;
+	color: white;
 }
-
+#nickname {
+	width: 150px;
+	height: 50px;
+	margin-bottom: 20px;
+	border-radius: 1%;
+	font-size: 1.5em;
+}
+#profile {
+	width: 150px;
+	height: 50px;
+	margin-bottom: 20px;
+	background-color: white;
+	border: 1px solid #ccc;
+	border-radius: 1%;
+}
 #myPlan_wishList_wrap {
 	display: flex;
 	flex-direction: row;
+	width: 300px;
+	justify-content: space-around;
 }
+#myPlan {
+	width: 130px;
+	height: 50px;
+	border: 1px solid #ccc;
+	border-radius: 1%;
+	background-color: white;
+}
+#wishList {
+	width: 130px;
+	height: 50px;
+	border: 1px solid #ccc;
+	border-radius: 1%;
+	background-color: white;
+}
+
+/* ㅡㅡㅡㅡㅡㅡ 위시리스트, 마이플랜 ㅡㅡㅡㅡㅡㅡ */
+#mP {
+	display: none;
+	width: 80%;
+	height: 35%;
+	background-color: red;
+}
+#wL {
+	display: none;
+	width: 80%;
+	height: 35%;
+	background-color: red;
+}
+
+
+
+
+
