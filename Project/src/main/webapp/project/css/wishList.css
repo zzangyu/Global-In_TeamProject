@@ -1,0 +1,33 @@
+@charset "UTF-8";
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	background: linear-gradient(rgba(255,255,255,0.5),rgba(255,255,255,0.5)),url(../images/clouds.jpg);
+	background-attachment: fixed;
+}
+
+#wishList_container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 60%;
+	background-color: red;
+}
+
+#firstWord_id {
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	background-color: white;
+	text-align: center;
+}
+
+#myPlan_wishList_wrap {
+	display: flex;
+	flex-direction: row;
+}
