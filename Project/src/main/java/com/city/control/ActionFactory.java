@@ -26,7 +26,7 @@ public class ActionFactory {
 			break;
 			
 		case "cityInfoSearch":
-			action = new cityInfoSearchAction();
+			action = new CityInfoSearchAction();
 			break;
 			
 		case "myPlan":

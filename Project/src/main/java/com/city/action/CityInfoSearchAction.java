@@ -10,7 +10,7 @@ import com.city.control.ActionForward;
 import com.city.model.CityDAO;
 import com.city.model.CityVO;
 
-public class cityInfoSearchAction implements Action {
+public class CityInfoSearchAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
