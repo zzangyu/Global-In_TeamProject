@@ -11,6 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@700&family=Gowun+Dodum&display=swap" rel="stylesheet">
 <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script> <!--jquery사용 -->
 <script type="text/javascript" src="js/CityInfo.js"></script>
+<script type="text/javascript" src="js/memberstyle.js"></script>
 <script src="https://kit.fontawesome.com/e14a2b80fa.js" crossorigin="anonymous"></script>
 <title>Insert title here</title>
 </head>
