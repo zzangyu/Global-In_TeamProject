@@ -57,6 +57,14 @@ public class ActionFactory {
 			action = new UpdateProcAction();
 			break;
 			
+		case "deletePlan":
+			action = new DeletePlanProcAction();
+			break;
+
+		case "wishList":
+			action = new WishListAction();
+			break;
+			
 		default:
 			action = new IndexAction();
 			break;

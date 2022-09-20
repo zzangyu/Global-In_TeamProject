@@ -297,6 +297,41 @@ public class CityDAO{
 		}	
 		
 	}
+	public List<String> getCity(String id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		List<String> arry = new ArrayList<String>();
+		
+		
+		try {
+			conn = getConnection();
+			
+			String strQuery = "select * from saveCity where save_city_id=?";
+			pstmt = conn.prepareStatement(strQuery);
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				arry.add(rs.getString("save_city_idCheck"));
+			}
+			
+		} catch (SQLException ss) {
+			System.out.println("sql Exception");
+		} catch (Exception e) {
+			System.out.println("Exception");
+		} finally {
+			if(conn != null) try{ conn.close(); }catch(SQLException s1){}
+			if(pstmt != null) try{ pstmt.close(); }catch(SQLException s2){}
+			if(rs != null) try{ rs.close(); }catch(SQLException s3){}
+		}	
+		
+		return arry;
+		
+	}
+	
 	public void deletePlan(String idCheck, String en) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;

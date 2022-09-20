@@ -1,7 +1,7 @@
 @charset "UTF-8";
 html, body {
 	width: 100%;
-	height: 100%;
+	height: auto;
 	Font-family: 'Gowun Dodum', sans-serif;
 }
 
@@ -24,6 +24,11 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+#profile:hover, #myPlan:hover, #wishList:hover {
+	color: white;
+	background-color: #98dde3;
+	cursor: pointer;
 }
 #firstWord_id {
 	width: 150px;
@@ -71,17 +76,39 @@ body {
 }
 
 /* ㅡㅡㅡㅡㅡㅡ 위시리스트, 마이플랜 ㅡㅡㅡㅡㅡㅡ */
+/* ㅡㅡㅡㅡㅡㅡ 마이플랜 ㅡㅡㅡㅡㅡㅡ */
 #mP {
 	display: none;
-	width: 80%;
-	height: 35%;
-	background-color: red;
+	width: 100%;
 }
+#mP h2 {
+	margin-left: 10%;
+}
+.mP_wrap {
+	display: inline-block;
+	width: 500px;
+	height: 125px;
+	border: 1px solid #999;
+	background-color: white;
+	margin: 10px 70px 20px 10%;
+}
+#wishList_makePlan {
+	text-align: center;
+	margin: 20px;
+}
+
 #wL {
 	display: none;
-	width: 80%;
-	height: 35%;
-	background-color: red;
+	width: 100%;
+	padding-left: 10%;
+}
+.wL_wrap {
+	display: inline-block;
+	width: 170px;
+	height: 230px;
+	border: 1px solid #999;
+	background-color: white;
+	margin: 10px 30px 10px 0;
 }
 
 

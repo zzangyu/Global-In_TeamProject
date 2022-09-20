@@ -51,6 +51,7 @@
                     <ul class="dep2">
                     	<li><a href="cityPlan.do?cmd=myPlanClick" target="_blank">일정만들기</a></li>
                     	<li><a href="cityPlan.do?cmd=necessity">준비물챙기기</a></li>
+                    	<li><a href="cityPlan.do?cmd=wishList">내 일정</a></li>
                     	<li>&nbsp;</li>
                     </ul>
                 </li>
