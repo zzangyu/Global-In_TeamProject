@@ -7,11 +7,11 @@
 <head>
 <meta charset="UTF-8">
 <title>여행 스케쥴링 플래너 - 도죠</title>
-<link rel="stylesheet" type="text/css" href="memberstyle.css">
+<link href="memberstyle.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src = "memberscript.js"></script>
 </head>
 <body class ="login-body">
-<form action="cityPlan.mb?cmd=loginProc" method = "post">
+<form action="cityPlan.do?cmd=loginProc" method = "post">
 <div class = "center">
 	<div class ="container">
 	   <div class = "text"><h2>LOG IN</h2></div>
@@ -29,7 +29,7 @@
 	   	 	
 	   	 	<!--비밀번호 찾기  -->
 	   	 	<div class = "forget-pass">
-	   	 	<a class="fg-pass" href ="cityPlan.mb?cmd=findpassword">비밀번호를 잊으셨나요?</a>
+	   	 	<a class="fg-pass" href ="cityPlan.do?cmd=findpassword">비밀번호를 잊으셨나요?</a>
 	   	 	</div>
 	   	 	
 	   	 	<!--로그인 버튼  -->
@@ -40,7 +40,7 @@
 	   	 	
 	   	 	<!--회원가입 링크  -->
 	   	 	<div class = "signup-link">회원이 아니신가요?
-	   	 	 <a class= "link" href = "cityPlan.mb?cmd=regForm">회원가입하기</a>
+	   	 	 <a class= "link" href = "cityPlan.do?cmd=regForm">회원가입하기</a>
 	   	 	</div>
 	   	 	
 	   	 	<!-- -->
@@ -50,7 +50,7 @@
 	   	 	</div>
 	   	 	
 	   		 <!--소셜 로그인 연동 (수정해야됨)-->
-	   	 	<div class = "sns-text">SNS 간편 로그인</div>
+	   	 <!-- 	<div class = "sns-text">SNS 간편 로그인</div>
 	   		 <div class = "social-container">
 	   		 	<div class = "socialBtn">
 	   		 		<div class="btn-image1" >
@@ -67,7 +67,7 @@
 	   		 		<img src = "./image/ffbtn.png" alt="logo">
 				</div>
 			</div>	   		 
-	   	</div>
+	   	</div> -->
 	  </div>
 	</div>
 	</div>

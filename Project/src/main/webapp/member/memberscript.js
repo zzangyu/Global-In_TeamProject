@@ -4,7 +4,7 @@ function idCheck(id) {
 		alert("아이디를 입력해주세요.");
 		document.regForm.id.focus();
 	}else {
-	 url = "cityPlan.mb?cmd=idCheck&id="+id;
+	 url = "cityPlan.do?cmd=idCheck&id="+id;
 	 window.open(url, "post", "width=300, height=150");	
 	}
 }
@@ -15,7 +15,7 @@ function nickCheck(nick) {
 		alert("닉네임을 입력해주세요.");
 		document.regForm.nick.focus();
 	}else {
-		url ="cityPlan.mb?cmd=nickCheck&nick="+nick;
+		url ="cityPlan.do?cmd=nickCheck&nick="+nick;
 		window.open(url, "post", "width=300, height=150");
 	}	
 	
@@ -113,13 +113,13 @@ function updateCheck(){
 
 // 프로필 수정 페이지로 이동
 function replaceLink() {
-	location.replace('cityPlan.mb?cmd=modifyForm');
+	location.replace('cityPlan.do?cmd=modifyForm');
 }
 
 //로그아웃
 function logout() {
 	if(confirm("정말 로그아웃 하시겠습니까?")) {
-		location.href = "<c:url value ='cityPlan.mb?cmd=logout'/>";
+		location.href = "<c:url value ='cityPlan.do?cmd=logout'/>";
 
 	}
 function refocus() {

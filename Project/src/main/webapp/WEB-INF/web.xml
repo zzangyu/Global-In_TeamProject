@@ -24,17 +24,18 @@
 	</taglib>
 </jsp-config>
 
-<servlet>
-	<servlet-name>myControl</servlet-name>
+<!--  <servlet>
+	<servlet-name>cityPlan</servlet-name>
 	<servlet-class>com.member.control.ControlServlet</servlet-class> 
-</servlet>
+</servlet> -->
 
-<servlet-mapping>
+<!--  <servlet-mapping>
 	<servlet-name>myControl</servlet-name> 
+	<url-pattern>*.css</url-pattern>
 	<url-pattern>*.mb</url-pattern>
-</servlet-mapping>	
-  
-<servlet>
+</servlet-mapping>
+   -->
+ <servlet>
 	<servlet-name>cityPlan</servlet-name>
 	<servlet-class>com.city.control.ControlServlet</servlet-class>
 </servlet>
@@ -43,5 +44,4 @@
 	<servlet-name>cityPlan</servlet-name>
 	<url-pattern>*.do</url-pattern>
 </servlet-mapping>
-
 </web-app>

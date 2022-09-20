@@ -40,8 +40,8 @@ public class ControlServlet extends HttpServlet {
 			out.println("<html>");
 			out.println("<head><title>Error</title></head>");
 			out.println("<body>");
-			out.println("<h4>¿Ã¹Ù¸¥ ¿äÃ»ÀÌ ¾Æ´Õ´Ï´Ù.</h4>");
-			out.println("<h4>http://localhost:8181/Project/project/cityPlan.do?cmd=¿äÃ»Å°¿öµå</h4>");
+			out.println("<h4>ì˜¬ë°”ë¥¸ ìš”ì²­ì´ ì•„ë‹™ë‹ˆë‹¤!!!!</h4>");
+			out.println("<h4>http://localhost:9090/ProjectMVC2/member/cityPlan.mb?cmd=ìš”ì²­í‚¤ì›Œë“œ</h4>");
 			out.println("</body>");
 			out.println("</html>");
 		}

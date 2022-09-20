@@ -15,14 +15,14 @@
 		<c:when test="${flag}">
 			<script type="text/javascript">
 			alert("회원 가입을 축하드립니다.");
-			location.href="cityPlan.mb?cmd=login";
+			location.href="cityPlan.do?cmd=login";
 			</script>
 		</c:when>
 		
 		<c:otherwise>
 			<script type="text/javascript">
 			alert("다시 입력해주세요.");
-			location.href="cityPlan.mb?cmd=regForm";
+			location.href="cityPlan.do?cmd=regForm";
 			</script>
 		</c:otherwise>
 	</c:choose>

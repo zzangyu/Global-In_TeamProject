@@ -12,7 +12,7 @@
 <script type="text/javascript" src = "memberscript.js"></script>
 </head>
 <body>
-<form action="cityPlan.mb?cmd=deleteProc" method="post" name="deleteForm">
+<form action="cityPlan.do?cmd=deleteProc" method="post" name="deleteForm">
 	<div class = "container">
   <div class = "text"><h2>회원 탈퇴</h2></div>
 	   <div class = "small-text">여행 스케쥴링 플래너 - 도죠</div>

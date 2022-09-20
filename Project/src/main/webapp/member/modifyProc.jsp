@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>여행 스케쥴링 플래너 - 도죠</title>
-<meta http-equiv ="Refresh" content = "1; url=cityPlan.mb?cmd=mypage.jsp">
+<meta http-equiv ="Refresh" content = "1; url=cityPlan.do?cmd=mypage.jsp">
 </head>
 <body>
 

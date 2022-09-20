@@ -16,7 +16,7 @@
 	<div class ="text">회원 수정</div>
 	<div class ="small-text">여행 스케쥴링 플래너 - 도죠</div>
 	
-	<form action="cityPlan.mb?cmd=modifyProc" method = "post" name = "regForm"><!--회원가입 폼 안에 있는 정보들을 DB로 넣어줘야 된다. -->
+	<form action="cityPlan.do?cmd=modifyProc" method = "post" name = "regForm"><!--회원가입 폼 안에 있는 정보들을 DB로 넣어줘야 된다. -->
 	 	<div><!--버튼을 눌러서 중복확인 중복화인은 자바스크립트로 함수로 구현  -->
 	 	  <label class = "label-text">아이디</label>
 	 	  <input class = "input-css" type = "text" name ="id" value = "${id}" disabled>
@@ -45,7 +45,7 @@
 	 	</div>
 	 
 		<div class = "membership-withdrawal">
-		 	<a class ="delete-link"href ="cityPlan.mb?cmd=deleteForm">회원탈퇴</a>
+		 	<a class ="delete-link"href ="cityPlan.do?cmd=deleteForm">회원탈퇴</a>
 		</div>
 		
 		<div>

@@ -11,6 +11,11 @@ select * from member;
 select * from user1;
 
 
+create table wishlist (
+id varchar2 (50) not null,
+wish varchar2 (60) not null
+);
+
 
 create table user1 (
 userid varchar2(30) not null,

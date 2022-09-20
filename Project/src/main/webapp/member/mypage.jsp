@@ -22,10 +22,10 @@
 		<button class =  "nav-profile-btn"  aria-expanded ="true"></button>
 		</div>	
 			<li>
-			<a href ="cityPlan.mb?cmd=mypage">마이페이지</a>
+			<a href ="cityPlan.do?cmd=mypage">마이페이지</a>
 		</li>
 		<li>
-			<a href ="cityPlan.mb?cmd=logout">로그아웃</a>
+			<a href ="cityPlan.do?cmd=logout">로그아웃</a>
 		</li>
 	</ul>
 	</div>

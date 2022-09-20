@@ -14,7 +14,7 @@
 	<div class ="text">SIGN UP</div>
 	<div class ="small-text">여행 스케쥴링 플래너 - 도죠</div>
 	
-	<form action="cityPlan.mb?cmd=regProc" method = "post" name = "regForm"><!--회원가입 폼 안에 있는 정보들을 DB로 넣어줘야 된다. -->
+	<form action="cityPlan.do?cmd=regProc" method = "post" name = "regForm"><!--회원가입 폼 안에 있는 정보들을 DB로 넣어줘야 된다. -->
 	 <div class = "regdiv">  
 	 	  <label class = "label-text">아이디</label>
 	 	<div class = "form-container"><!--버튼을 눌러서 중복확인 중복화인은 자바스크립트로 함수로 구현  -->

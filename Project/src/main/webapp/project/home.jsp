@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,7 +62,7 @@
     <%-- <% if(session어쩌고) { %> --%>
            <!-- <a href="#"><i class="fa-solid fa-user"></i></a> -->
     <%-- <% } else { %> --%>
-            <div id="login_Btn"><a href="#">로그인</a></div>
+            <div id="login_Btn"><a href="cityPlan.do?cmd=login">로그인</a></div>
     <%-- <% } %> --%>
         </div>
     </div>
