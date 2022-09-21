@@ -22,18 +22,14 @@ public class WishListAction implements Action {
 		// id로 idCheck값 리스트로 받아옴(중복x)
 		List<String> arry = dao.getCity(id);
 		TreeSet<String> set = new TreeSet<String>(arry);
-		List<String> resultArry = new ArrayList<>();
-		resultArry = new ArrayList<String>(set);
+		List<String> resultArry = new ArrayList<>(set);
 		
 		List<SaveCityVO> planList = new ArrayList<>();
-		for(int i = 0; i < resultArry.size(); i++) {
+		for(int i = 0; i < arry.size(); i++) {
 			planList.addAll(dao.getCity(resultArry.get(i), id));
 		}
-		for (int i = 0; i < resultArry.size(); i++) {
-			System.out.print(resultArry.get(i)+" ");
-		}
+		
 		request.setAttribute("planList", planList);		
-		request.setAttribute("arry", arry);
 		return new ActionForward("/project/wishList.jsp", false);
 	}
 

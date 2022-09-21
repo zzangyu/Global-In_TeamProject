@@ -6,4 +6,5 @@ save_city_kor varchar2(30),
 save_schedule varchar2(30)
 );
 drop table saveCity;
+delete from saveCity;
 select * from saveCity;
