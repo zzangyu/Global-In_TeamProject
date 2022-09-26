@@ -65,6 +65,14 @@ public class ActionFactory {
 			action = new WishListAction();
 			break;
 			
+		case "insertWishList":
+			action = new InsertWishList();
+			break;
+			
+		case "deleteWishList":
+			action = new DeleteWishList();
+			break;
+			
 		default:
 			action = new IndexAction();
 			break;

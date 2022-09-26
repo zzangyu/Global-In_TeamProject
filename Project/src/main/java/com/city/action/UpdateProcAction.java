@@ -18,7 +18,7 @@ public class UpdateProcAction implements Action {
 		request.setCharacterEncoding("utf-8");
 		String id = "han"; // 나중에 session값 받는걸로 바꿔야함
 		// String idCheck = request.getParameter("idCheck"); // 얘도 바꿔야함
-		String idCheck = "1441578han6915909"; // 얘도 바꿔야함
+		String idCheck = request.getParameter("idCheck"); // 얘도 바꿔야함
 		CityDAO dao = CityDAO.getInstance();
 		List<SaveCityVO> arry = dao.getCity(idCheck, id); // 기존에 저장된 나라들 가져오기
 		dao.deletePlan(idCheck);

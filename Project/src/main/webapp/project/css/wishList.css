@@ -19,6 +19,7 @@ body {
 	width: 100%;
 	height: 60%;
 	padding-top: 100px;
+	padding-bottom: 25px;
 }
 #firstWord_id, #nickname, #profile, #myPlan, #wishList {
 	display: flex;
@@ -77,27 +78,44 @@ body {
 
 /* ㅡㅡㅡㅡㅡㅡ 위시리스트, 마이플랜 ㅡㅡㅡㅡㅡㅡ */
 /* ㅡㅡㅡㅡㅡㅡ 마이플랜 ㅡㅡㅡㅡㅡㅡ */
-#mP {
+.mP {
 	display: none;
 	width: 100%;
 }
-#mP h2 {
-	margin-left: 10%;
+.flex_wrap {
+	display: flex;
+	justify-content: center;
+}
+.mP h2 {
+	text-align: center;
 }
 .mP_wrap {
-	display: inline-block;
+	display: flex;
+	justify-content:center;
 	width: 500px;
 	height: 125px;
 	border: 1px solid #999;
 	background-color: white;
-	margin: 10px 70px 20px 10%;
+	margin: 10px 0 20px 0;
+}
+.mP_wrap_1{
+	flex: 0.85;
+	padding: 5px 0 0 10px;
+}
+.update_wrap {
+	flex: 0.15;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+.update_wrap {
+	text-align: center;
 }
 #wishList_makePlan {
 	text-align: center;
 	margin: 20px;
 }
-
-#wL {
+.wL {
 	display: none;
 	width: 100%;
 	padding-left: 10%;
@@ -105,12 +123,19 @@ body {
 .wL_wrap {
 	display: inline-block;
 	width: 170px;
-	height: 230px;
+	height: 200px;
 	border: 1px solid #999;
 	background-color: white;
 	margin: 10px 30px 10px 0;
 }
-
+.wL_wrap_sub {
+	width: 100%;
+	height: 88%;
+}
+.wL_wrap img {
+	width: 100%;
+	height: 100%;
+}
 
 
 

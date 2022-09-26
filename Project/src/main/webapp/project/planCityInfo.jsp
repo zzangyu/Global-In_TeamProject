@@ -37,7 +37,12 @@
 			<div id="forFlex">
 				<h2>${arry.getCityinfoname()}</h2>
 				<div id="cityInfoS"><b>${arry.getCityinfoS()}</b></div>
-				<div class="wishList" onclick="clickMenuHandler()">☆</div>
+				<c:if test="${check eq true }">
+					<div class="wishList_t"><a href="cityPlan.do?cmd=deleteWishList&name=${name }">☆</a></div>
+				</c:if>
+				<c:if test="${check eq false }">
+					<div class="wishList_f"><a href="cityPlan.do?cmd=insertWishList&name=${name }">☆</a></div>
+				</c:if>
 			</div>
 			<div id="infoWrap">
 				<div id="peakMonth">

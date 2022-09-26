@@ -16,8 +16,15 @@
     display: flex;
     background-color:white;
     text-align: center;
-    padding-top: 10px;
     z-index: 1;
+}
+.container .header h1 {
+	padding-top: 5px;
+}
+.container .header h1 a img{
+	width: 60px;
+	height: 60px;
+	border-radius: 20px;
 }
 .header {
 	border-bottom: 1px solid #ccc;
@@ -34,6 +41,7 @@
     justify-content: center;
 	align-items: center;
 	padding-bottom: 10px;
+	padding-top: 10px;
 }
 .container .header .logo {
     flex: 15%;
@@ -52,6 +60,7 @@ a {
     flex: 70%;
     display: flex;
     justify-content: center; 
+    padding-top: 10px;
 }
 .menu_wrap .dep1 > li {
     display: table-cell;

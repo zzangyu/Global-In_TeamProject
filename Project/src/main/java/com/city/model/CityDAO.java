@@ -232,7 +232,8 @@ public class CityDAO{
 			if(conn!=null) try {conn.close();} catch (SQLException s3) { }
 		}
 	}
-	public List<SaveCityVO> getCity(String idCheck, String id) {
+	public List<SaveCityVO> getCityInfo(String id) {
+//		public List<SaveCityVO> getCity(String idCheck, String id) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -243,10 +244,11 @@ public class CityDAO{
 		try {
 			conn = getConnection();
 			
-			String strQuery = "select * from saveCity where save_city_idCheck=? and save_city_id=?";
+//			String strQuery = "select * from saveCity where save_city_idCheck=? and save_city_id=?";
+			String strQuery = "select * from saveCity where save_city_id=? order by save_schedule asc";
 			pstmt = conn.prepareStatement(strQuery);
-			pstmt.setString(1, idCheck);
-			pstmt.setString(2, id);
+//			pstmt.setString(1, idCheck);
+			pstmt.setString(1, id);
 			
 			rs = pstmt.executeQuery();
 			
@@ -332,6 +334,49 @@ public class CityDAO{
 		
 	}
 	
+	public List<SaveCityVO> getCity(String idCheck, String id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		List<SaveCityVO> arry = new ArrayList<SaveCityVO>();
+		
+		
+		try {
+			conn = getConnection();
+			
+			String strQuery = "select * from saveCity where save_city_idCheck=? and save_city_id=?";
+			pstmt = conn.prepareStatement(strQuery);
+			pstmt.setString(1, idCheck);
+			pstmt.setString(2, id);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				SaveCityVO vo = new SaveCityVO();
+				vo.setSave_city_id(rs.getString("save_city_id"));
+				vo.setSave_city_idCheck(rs.getString("save_city_idCheck"));
+				vo.setSave_city_eng(rs.getString("save_city_eng"));
+				vo.setSave_city_kor(rs.getString("save_city_kor"));
+				vo.setSave_schedule(rs.getString("save_schedule"));
+				
+				arry.add(vo);
+			}
+			
+		} catch (SQLException ss) {
+			System.out.println("sql Exception");
+		} catch (Exception e) {
+			System.out.println("Exception");
+		} finally {
+			if(conn != null) try{ conn.close(); }catch(SQLException s1){}
+			if(pstmt != null) try{ pstmt.close(); }catch(SQLException s2){}
+			if(rs != null) try{ rs.close(); }catch(SQLException s3){}
+		}	
+		
+		return arry;
+		
+	}
+	
 	public void deletePlan(String idCheck, String en) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -379,6 +424,128 @@ public class CityDAO{
 			if(conn != null) try{ conn.close(); }catch(SQLException s1){}
 			if(pstmt != null) try{ pstmt.close(); }catch(SQLException s2){}
 		}	
+		
+	}
+	
+	public boolean getWishList(String id, String name) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		boolean check = false;
+		
+		try {
+			conn = getConnection();
+			
+			String strQuery = "select * from wishList where id=? and cityList=?";
+			pstmt = conn.prepareStatement(strQuery);
+			pstmt.setString(1, id);
+			pstmt.setString(2, name);
+			
+			rs = pstmt.executeQuery();
+
+			if(rs.next()) {
+				check = true;
+			}
+			
+		} catch (SQLException ss) {
+			System.out.println("sql Exception111");
+		} catch (Exception e) {
+			System.out.println("Exception");
+		} finally {
+			if(conn != null) try{ conn.close(); }catch(SQLException s1){}
+			if(pstmt != null) try{ pstmt.close(); }catch(SQLException s2){}
+			if(rs != null) try{ rs.close(); }catch(SQLException s3){}
+		}	
+		
+		return check;
+		
+	}
+	
+	public void insertWishList(String id, String name) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = getConnection();
+			
+			String strQuery = "insert into wishList values(?, ?)";
+			pstmt = conn.prepareStatement(strQuery);
+			pstmt.setString(1, id);
+			pstmt.setString(2, name);
+			pstmt.executeUpdate();
+			
+		} catch (SQLException ss) {
+			System.out.println("sql Exception 179");
+		} catch (Exception e) {
+			System.out.println("Exception");
+		} finally {
+			if(conn != null) try{ conn.close(); }catch(SQLException s1){}
+			if(pstmt != null) try{ pstmt.close(); }catch(SQLException s2){}
+		}	
+		
+	}
+	
+	public void deleteWishList(String id, String name) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = getConnection();
+			
+			String strQuery = "delete wishList where id=? and cityList=?";
+			pstmt = conn.prepareStatement(strQuery);
+			pstmt.setString(1, id);
+			pstmt.setString(2, name);
+			pstmt.executeUpdate();
+			
+		} catch (SQLException ss) {
+			System.out.println("sql Exception 180");
+		} catch (Exception e) {
+			System.out.println("Exception");
+		} finally {
+			if(conn != null) try{ conn.close(); }catch(SQLException s1){}
+			if(pstmt != null) try{ pstmt.close(); }catch(SQLException s2){}
+		}	
+		
+	}
+	
+	public List<WishListVO> getwishListCity(String id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		List<WishListVO> arry = new ArrayList<>();
+		
+		
+		try {
+			conn = getConnection();
+			
+			String strQuery = "select * from wishList where id=?";
+			pstmt = conn.prepareStatement(strQuery);
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				WishListVO vo = new WishListVO();
+				vo.setId(rs.getString("id"));
+				vo.setCityList(rs.getString("cityList"));
+				
+				arry.add(vo);
+			}
+			
+		} catch (SQLException ss) {
+			System.out.println("sql Exception222");
+		} catch (Exception e) {
+			System.out.println("Exception");
+		} finally {
+			if(conn != null) try{ conn.close(); }catch(SQLException s1){}
+			if(pstmt != null) try{ pstmt.close(); }catch(SQLException s2){}
+			if(rs != null) try{ rs.close(); }catch(SQLException s3){}
+		}	
+		
+		return arry;
 		
 	}
 	

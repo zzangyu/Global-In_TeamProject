@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@700&family=Gowun+Dodum&display=swap" rel="stylesheet">
 <link href="css/wishList.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/MyPlan.js"></script>
 </head>
 <body>
 	<div id="wishList_container">
@@ -20,21 +21,34 @@
 			<div id="wishList" onclick="wishListClick()">위시리스트</div>
 		</div>
 	</div>
-	<c:forEach var="planList" items="${planList}">
-	<div id="mP"> <!-- 일정이 있으면 나오게 하기 없으면 일정 만들기 뜨게하기 -->
-		<h2>${planList.getSave_city_id()}님의 일정</h2>
-		<div class="mP_wrap">
-			<div>${planList.getSave_city_idCheck() }</div>
-			<div>${planList.getSave_city_kor() }</div>
-			<div><a href="">수정</a></div>
-			<div><a href="myPlan.do?cmd=deletePlan&idCheck=${list}">삭제</a></div>
-		</div>
+	<c:if test="${arraySize < 1 }">
 		<div id="wishList_makePlan"><a href="cityPlan.do?cmd=myPlanClick">저장된 일정이 없습니다! 만들러 가버려잇</a></div>
+	</c:if>
+	<c:forEach var="result" items="${result }" varStatus="status">
+	<div class="mP"> <!-- 일정이 있으면 나오게 하기 없으면 일정 만들기 뜨게하기 -->
+		<h2>HAN님의 ${status.count}번째 일정</h2>
+		<div class="flex_wrap">
+			<div class="mP_wrap">
+				<div class="mP_wrap_1"><a href="cityPlan.do?cmd=necessity" style="color:#999;">여행 준비물 확인</a>${result.getSave_city_kor() }</div>
+				<div class="update_wrap">
+					<div><a href="myPlan.do?cmd=planInsert&idCheck=${result.getSave_city_idCheck() }">수정</a></div>
+					<div><a href="myPlan.do?cmd=deletePlan&idCheck=${result.getSave_city_idCheck() }">삭제</a></div>
+				</div>
+			</div>
+		</div>
 	</div>
 	</c:forEach>
-	<div id="wL">
-		<h2>님의 위시리스트</h2>
-		<div class="wL_wrap"></div>
+	<div class="wL">
+		<h2>HAN님의 위시리스트</h2>
+		<c:forEach var="cityWishList" items="${cityWishList }">
+		<c:set var="cityWishList.getCityList()" value="${cityWishList.getCityList() }" />
+			<div class="wL_wrap">
+				<div class="wL_wrap_sub">
+					<img src="img/${cityWishList.getCityList() }.jpg">
+				</div>
+				<div align="center" onclick="infoGo('${cityWishList.getCityList() }')">${cityWishList.getCityList() } 가이드북 보기</div>
+			</div>
+		</c:forEach>
 	</div>
 <script type="text/javascript" src="js/wishList.js"></script>
 </body>

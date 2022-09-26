@@ -27,7 +27,7 @@
     	window.addEventListener('scroll',scrollFunc);
     </script>
         <div class="logo">
-        	<h1><a href="cityPlan.do?cmd=cityInfoView">LOGO</a></h1>
+         	<h1><a href="cityPlan.do?cmd=cityInfoView"><img src="img/jy.jpg"></a>도죠</h1>
         </div>
         <div class="menu_wrap">
             <ul class="dep1">

@@ -36,7 +36,7 @@ public class DeletePlanProcAction implements Action {
 		
 		request.setAttribute("planList", planList);		
 		request.setAttribute("arry", arry);
-		return new ActionForward("/project/wishList.jsp", false);
+		return new ActionForward("cityPlan.do?cmd=wishList", false);
 	}
 
 }

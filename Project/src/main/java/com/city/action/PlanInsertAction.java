@@ -17,7 +17,7 @@ public class PlanInsertAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		CityDAO dao = CityDAO.getInstance();
 		String id = "han"; // 임의로 지정 => session으로 받을 예정
-    	String idCheck = "7han5"; // 임의로 지정 => 마이페이지 완성되면 변경
+    	String idCheck = request.getParameter("idCheck"); // 임의로 지정 => 마이페이지 완성되면 변경
 		List<SaveCityVO> arry = dao.getCity(idCheck, id);
 		List<CityVO> arry2 = dao.getCity();
 		

@@ -30,6 +30,12 @@ body {
     color: black;
     font-family: abster;
 }
+.container .header h1 a img{
+	margin-top: 20px;
+	width: 60px;
+	height: 60px;
+	border-radius: 20px;
+}
 .container .nav ul li {   /*헤드 네브 바*/
     display: inline-block;
     margin: 0 10px;

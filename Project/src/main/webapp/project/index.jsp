@@ -11,7 +11,8 @@
 <body>
     <div class="container" >
         <div class="header">
-            <h1><a>LOGO</a></h1>
+            <h1><a><img src="img/jy.jpg"></a>도죠</h1>
+            
             <div class="nav">
                 <ul>
                     <li><a href="#">Login</a></li>
