@@ -172,11 +172,11 @@ public class CityDAO{
 			System.out.println("sql Exception");
 		} catch (Exception e) {
 			System.out.println("Exception");
-		} finally {
+		} finally {	
 			if(conn != null) try{ conn.close(); }catch(SQLException s1){}
 			if(stmt != null) try{ stmt.close(); }catch(SQLException s2){}
 			if(rs != null) try{ rs.close(); }catch(SQLException s3){}
-		}	
+		}
 		
 		return arry;
 		
@@ -477,6 +477,7 @@ public class CityDAO{
 			
 		} catch (SQLException ss) {
 			System.out.println("sql Exception 179");
+			ss.printStackTrace();
 		} catch (Exception e) {
 			System.out.println("Exception");
 		} finally {

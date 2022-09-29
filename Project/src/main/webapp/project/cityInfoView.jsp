@@ -59,7 +59,12 @@
 						<div class="icon"><div><i class="fa-solid fa-clock-rotate-left"></i></div><div>${arry.getHour()}</div></div>
 						<div class="icon"><div><i class="fa-solid fa-plane-departure"></i></div><div>${arry.getTimedifference()}</div></div>
 					</div>
-					<div id="plan" onclick="location.href='cityPlan.do?cmd=myPlan&lat=${arry.getLatitude()}&lng=${arry.getLongitude()}'">일정 만들기</div>
+					<c:if test="${loginID eq null}">
+						<div id="plan" onclick="location.href='cityPlan.do?cmd=login'">일정 만들기</div>
+                   	</c:if>
+                    <c:if test="${loginID ne null}">
+						<div id="plan" onclick="location.href='cityPlan.do?cmd=myPlan&lat=${arry.getLatitude()}&lng=${arry.getLongitude()}'">일정 만들기</div>
+                   	</c:if>
 				</div>
 			</div>
 		</div>

@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.city.control.ActionForward;
 import com.city.model.CityDAO;
@@ -16,7 +17,8 @@ public class PlanInsertAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		CityDAO dao = CityDAO.getInstance();
-		String id = "han"; // 임의로 지정 => session으로 받을 예정
+		HttpSession session = request.getSession();
+		String id =(String)session.getAttribute("loginID");
     	String idCheck = request.getParameter("idCheck"); // 임의로 지정 => 마이페이지 완성되면 변경
 		List<SaveCityVO> arry = dao.getCity(idCheck, id);
 		List<CityVO> arry2 = dao.getCity();

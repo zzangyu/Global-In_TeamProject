@@ -8,6 +8,7 @@ import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.city.control.ActionForward;
 import com.city.model.CityDAO;
@@ -19,7 +20,8 @@ public class DeletePlanProcAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String idCheck = request.getParameter("idCheck");
-		String id = "han";
+		HttpSession session = request.getSession();
+		String id =(String)session.getAttribute("loginID");
 		CityDAO dao = CityDAO.getInstance();
 		if(idCheck != null) {
 			dao.deletePlan(idCheck);

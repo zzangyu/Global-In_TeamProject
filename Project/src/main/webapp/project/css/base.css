@@ -48,6 +48,10 @@
 .container .header .logo {
     flex: 15%;
 }
+.logo img {
+	width: 150px;
+	height: 69px;
+}
 .nav >li {
     margin-left: 12px;
 }
@@ -101,4 +105,7 @@ a {
 }
 .menu_wrap .dep2 a:hover {
     color: #999;
+}
+.login_Btn {
+	margin-left: 10px;
 }

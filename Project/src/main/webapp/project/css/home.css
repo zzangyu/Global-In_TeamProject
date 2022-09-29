@@ -46,6 +46,10 @@
 .container .header .logo {
     flex: 15%;
 }
+.logo img {
+	width: 150px;
+	height: 69px;
+}
 .nav >li {
     margin-left: 12px;
 }
@@ -157,4 +161,8 @@ a {
 .link a {
     color: #000;
     font-size: 25px; 
+}
+
+.login_Btn {
+	margin-left: 20px;
 }

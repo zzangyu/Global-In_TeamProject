@@ -7,21 +7,15 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.city.control.ActionForward;
-import com.city.model.CityDAO;
 
-public class InsertWishList implements Action {
+public class LogoutAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
-		String id =(String)session.getAttribute("loginID");
-		String name = request.getParameter("name");
+		session.invalidate();
 		
-		CityDAO dao = CityDAO.getInstance();
-		dao.insertWishList(id, name);
-		request.setAttribute("name", name);
-		return new ActionForward("cityPlan.do?cmd=planCityInfo", false);
+		return new ActionForward("/project/logout.jsp");
 	}
 
 }

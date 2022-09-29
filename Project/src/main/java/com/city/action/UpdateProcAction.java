@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.city.control.ActionForward;
 import com.city.model.CityDAO;
@@ -16,7 +17,8 @@ public class UpdateProcAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
 		request.setCharacterEncoding("utf-8");
-		String id = "han"; // ³ªÁß¿¡ session°ª ¹Þ´Â°É·Î ¹Ù²ã¾ßÇÔ
+		HttpSession session = request.getSession();
+		String id =(String)session.getAttribute("loginID");
 		// String idCheck = request.getParameter("idCheck"); // ¾êµµ ¹Ù²ã¾ßÇÔ
 		String idCheck = request.getParameter("idCheck"); // ¾êµµ ¹Ù²ã¾ßÇÔ
 		CityDAO dao = CityDAO.getInstance();

@@ -9,9 +9,11 @@ import java.util.TreeSet;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.city.control.ActionForward;
 import com.city.model.CityDAO;
+import com.city.model.MembershipDAO;
 import com.city.model.SaveCityVO;
 import com.city.model.WishListVO;
 
@@ -19,7 +21,8 @@ public class WishListAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		String id = "han";
+		HttpSession session = request.getSession();
+		String id =(String)session.getAttribute("loginID");
 		CityDAO dao = CityDAO.getInstance();
 		
 		// id로 idCheck값 리스트로 받아옴(중복x)
@@ -52,8 +55,18 @@ public class WishListAction implements Action {
 			vo.setSave_city_idCheck(resultArry.get(i));
 			result.add(vo);
 		}
+		
+		// 닉네임 얻어오기
+		MembershipDAO m_dao = MembershipDAO.getInstance();
+		String nick = m_dao.getNick(id);
+		
+		// 아이디 첫글자 뽑기
+		String id_first = id.substring(0, 1);
+		
 		request.setAttribute("result", result);
 		request.setAttribute("arraySize", arraySize);
+		request.setAttribute("nick", nick);
+		request.setAttribute("id_first", id_first);
 		
 		// 위시 리스트(도시)
 		List<WishListVO> cityWishList = dao.getwishListCity(id);

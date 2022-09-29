@@ -12,7 +12,7 @@ select * from saveCity;
 
 create table wishList (
 id varchar2 (50) not null,
-cityList varchar2 (60) unique
+cityList varchar2 (60) not null
 );
 
 select * from wishList;
