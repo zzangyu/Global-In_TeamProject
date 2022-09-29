@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.city.control.ActionForward;
 import com.city.model.CityDAO;
@@ -16,9 +17,10 @@ public class UpdateProcAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
 		request.setCharacterEncoding("utf-8");
-		String id = "han"; // 나중에 session값 받는걸로 바꿔야함
+		HttpSession session = request.getSession();
+		String id =(String)session.getAttribute("loginID");
 		// String idCheck = request.getParameter("idCheck"); // 얘도 바꿔야함
-		String idCheck = "1441578han6915909"; // 얘도 바꿔야함
+		String idCheck = request.getParameter("idCheck"); // 얘도 바꿔야함
 		CityDAO dao = CityDAO.getInstance();
 		List<SaveCityVO> arry = dao.getCity(idCheck, id); // 기존에 저장된 나라들 가져오기
 		dao.deletePlan(idCheck);

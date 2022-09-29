@@ -6,6 +6,7 @@ import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.city.control.ActionForward;
 import com.city.model.CityDAO;
@@ -18,7 +19,8 @@ public class SaveProcAction implements Action {
 		request.setCharacterEncoding("utf-8");
 		CityDAO dao = CityDAO.getInstance();
 		Random rand = new Random(); /* idCheck를 랜덤으로 추가해주기 위해 객체 생성 */
-		String id = "han";
+		HttpSession session = request.getSession();
+		String id =(String)session.getAttribute("loginID");
 		String idCheck_set = "";
 		List<String> arry = dao.idCheck(id); /* ex) id가 han인 유저가 저장한 plan들을 모두 불러옴 */
 		if(arry.size() == 0){ /* plan이 없으면 (처음 저장하는거면) */

@@ -11,11 +11,11 @@
 <body>
     <div class="container" >
         <div class="header">
-            <h1><a>LOGO</a></h1>
+            <a href="cityPlan.do?cmd=cityInfoView" id="logo"><img src="images/logo.png"></a>
             <div class="nav">
-                <ul>
-                    <li><a href="#">Login</a></li>
-                    <li><a href="#">Join</a></li>
+                <ul> 
+                    <li><a href="cityPlan.do?cmd=login">Login</a></li>
+                    <li><a href="cityPlan.do?cmd=regForm">Join</a></li>
                 </ul>
             </div>
         </div>
@@ -54,8 +54,8 @@
             <div class="small18" onclick="ViewLayer('city10');"><div class="small18-1"><a class="font">캐나다</a></div></div>
             <div class="small19" onclick="ViewLayer('city11');"><div class="small19-1"><a class="font">LA</a></div></div>
             <div class="small20" onclick="ViewLayer('city12');"><div class="small20-1"><a class="font">뉴욕</a></div></div>
+        	</div>
         </div>
-    </div>
     <script type="text/javascript" src="js/index.js"></script>
 </body>
 </html>

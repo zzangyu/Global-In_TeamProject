@@ -100,7 +100,7 @@
 #searchBtn {
 	position: absolute;
 	top: 63px;
-	left: 690px;
+	left: 850px;
 	z-index: 3;
 	border: none;
 	background-color: white;
@@ -108,7 +108,7 @@
 #input {
 	position: absolute;
 	top: 47px;
-	left: 440px;
+	left: 600px;
 	z-index: 2;
 	height: 3em;
 	width: 250px;
@@ -123,7 +123,7 @@
 #savePlan {
 	position: absolute;
 	top: 47px;
-	left: 1400px;
+	left: 1700px;
 	z-index: 2;
 	height: 3em;
 	background-color: white;

@@ -39,7 +39,7 @@ h2 {
     border-radius: 3px;
     color: white;
 }
-.btn-active {
+/* .btn-active {
 	background-color: #98dde3;
 	color: white;
 	transition: 0.1s;
@@ -55,6 +55,39 @@ h2 {
     font-size: 1.3em;
     border: 1px solid black;
     border-radius: 2px;
+} */
+.wishList_t {
+	position: absolute;
+    left: 720px;
+    top: 500px;
+    height: 20px;
+    vertical-align: middle;
+    margin: 0 10px 8px 0px;
+    padding: 0 10px 15px 10px;
+    font-size: 1.3em;
+    border: 1px solid black;
+    border-radius: 2px;
+    background-color: #98dde3;
+}
+.wishList_f {
+	position: absolute;
+    left: 720px;
+    top: 500px;
+    height: 20px;
+    vertical-align: middle;
+    margin: 0 10px 8px 0px;
+    padding: 0 10px 15px 10px;
+    font-size: 1.3em;
+    border: 1px solid black;
+    border-radius: 2px;
+}
+.wishList_t a {
+	text-decoration: none;
+	color: white;
+}
+.wishList_f a {
+	text-decoration: none;
+	color: black;
 }
 #imgWrap img {
 	width: 100%;

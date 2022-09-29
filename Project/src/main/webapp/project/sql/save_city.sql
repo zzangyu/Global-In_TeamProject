@@ -5,5 +5,15 @@ save_city_eng varchar2(30),
 save_city_kor varchar2(30),
 save_schedule varchar2(30)
 );
-drop table saveCity;
+delete from saveCity;
+
 select * from saveCity;
+
+
+create table wishList (
+id varchar2 (50) not null,
+cityList varchar2 (60) not null
+);
+
+select * from wishList;
+drop table wishList;

@@ -30,6 +30,12 @@ body {
     color: black;
     font-family: abster;
 }
+.container .header h1 a img{
+	margin-top: 20px;
+	width: 60px;
+	height: 60px;
+	border-radius: 20px;
+}
 .container .nav ul li {   /*헤드 네브 바*/
     display: inline-block;
     margin: 0 10px;
@@ -42,7 +48,12 @@ body {
 .container .nav ul li a:hover{ /*메뉴바 호버기능주면  login 회원가입 파란색으로 바뀜*/
     color: #1fdfdf;
 }
-
+#logo img {
+	width: 150px;
+	height: 69px;
+	margin-top: 5px;
+	
+}
 
 
 .rectangle { /*마름모*/
@@ -53,7 +64,8 @@ body {
     transform: scale(1, 0.8) rotate(-45deg);
     margin-left: 450px;
 	border-radius: 50%;
-	top: -10px;
+	top: 80px;
+    left: 200px;
    
 }
 .minibox { /*마름모안에 작은 네모*/
