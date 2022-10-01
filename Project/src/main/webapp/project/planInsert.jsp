@@ -29,8 +29,8 @@
 				<c:forEach var="arry" items="${arry}" varStatus="status">
 				<div class="planInsert_size">
 					<input type="hidden" name="idCheck" value="${idCheck}"> 
-					<input type="hidden" name="bfcityEn${arry.count}" value="${arry.getSave_city_eng()}">
-					<input type="hidden" name="bfcityKr${arry.count}" value="${arry.getSave_city_eng()}">
+					<input type="hidden" name="bfcityEn${status.count}" value="${arry.getSave_city_eng()}">
+					<input type="hidden" name="bfcityKr${status.count}" value="${arry.getSave_city_kor()}">
 					<!-- 이전에 저장되었던 정보들을 updateProc.jsp에 보내기위해 hidden을 사용함 -->
 					<div id="borderWrap">
 						<div class="border1"></div> <!-- 추가된 공간에 border를 이용해서 꾸미기 위해 만든 div -->
@@ -38,10 +38,10 @@
 						<div class="border1"></div>
 					</div>
 					<div id="planInsert"> <!-- 이 나라들이 부분에 추가됨 -->
-						<input type="text" class="demoBefore${arry.count}" name="bfsche${arry.count}"/> <!-- daterangepicker 불러오기 위한 input -->
+						<input type="text" class="demoBefore${status.count}" name="bfsche${status.count}"/> <!-- daterangepicker 불러오기 위한 input -->
 						<script type="text/javascript">
 							$(function () { /* daterangepicker 초기설정 */
-    							$('input[name=bfsche${arry.index+1}]').daterangepicker({
+    							$('input[name=bfsche${status.index+1}]').daterangepicker({
         							"locale": {
             							"format": "YYYY-MM-DD",
             							"separator": " ~ ",

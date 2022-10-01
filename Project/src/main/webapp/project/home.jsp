@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="loginID" value="${sessionScope.loginID}"/>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +30,7 @@
     	window.addEventListener('scroll',scrollFunc);
     </script>
         <div class="logo">
-        	<h1><a href="cityPlan.do?cmd=cityInfoView">LOGO</a></h1>
+        	<a href="cityPlan.do?cmd=cityInfoView"><img src="images/logo.png"></a>
         </div>
         <div class="menu_wrap">
             <ul class="dep1">
@@ -49,20 +52,29 @@
                 <li>
                     <span>내일정</span>
                     <ul class="dep2">
+                    <c:if test="${loginID eq null}">
+                    	<li><a href="cityPlan.do?cmd=login">일정만들기</a></li>
+                   	</c:if>
+                    <c:if test="${loginID ne null}">
                     	<li><a href="cityPlan.do?cmd=myPlanClick" target="_blank">일정만들기</a></li>
+                   	</c:if>
                     	<li><a href="cityPlan.do?cmd=necessity">준비물챙기기</a></li>
                     	<li>&nbsp;</li>
                     </ul>
                 </li>
             </ul>
         </div>
-        <div class="nav">
-    <%-- <% if(session어쩌고) { %> --%>
-           <!-- <a href="#"><i class="fa-solid fa-user"></i></a> -->
-    <%-- <% } else { %> --%>
-            <div id="login_Btn"><a href="#">로그인</a></div>
-    <%-- <% } %> --%>
-        </div>
+        <c:if test="${loginID eq null}">
+        	<div class="nav">
+            	<div class="login_Btn"><a href="cityPlan.do?cmd=login">로그인</a></div>
+        	</div>
+        </c:if>
+        <c:if test="${loginID ne null}">
+        	<div class="nav">
+            	<div class="login_Btn"><a href="cityPlan.do?cmd=wishList">마이페이지</a></div>
+            	<div class="login_Btn"><a href="cityPlan.do?cmd=logout">로그아웃</a></div>
+        	</div>
+        </c:if>
     </div>
        
     <div class="mediafilm">
