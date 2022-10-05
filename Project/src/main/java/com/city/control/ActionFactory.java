@@ -116,9 +116,93 @@ public class ActionFactory {
 		case"deleteProc":
 			action = new DeleteProcAction();
 			break;	
-		//2022-09-26 비밀번호 찾기
+			
 		case"findPwResult":
 			action = new FindPwResultAction();
+			break;
+			
+		case "boardList":
+			action = new BoardListAction();
+			break;
+			
+		case "boardContent":
+			action = new BoardContentAction();
+			break;
+			
+		case "boardWriteProc" :
+			action = new BoardWriteProcAction();
+			break;
+			
+		case "boardUpdateProc" :
+			action = new BoardUpdateProcAction();
+			break;
+			
+		case "boardDeleteProc" :
+			action = new BoardDeleteProcAction();
+			break;
+			
+		case "comment" :
+			action = new CommentAction();
+			break;
+			
+		case "commentDelete" :
+			action = new CommentDeleteAction();
+			break;
+			
+		case "commentUpdate" :
+			action = new CommentUpdateAction();
+			break;
+			
+		case "commentUpdateProc" :
+			action = new CommentUpdateProcAction();
+			break;
+			
+		case "evaluation" :
+			action = new EvaluationAction();
+			break;
+			
+		case "freeEvaluation" :
+			action = new FreeEvaluationAction();
+			break;
+			
+		case "freeBoardList" :
+			action = new FreeBoardListAction();
+			break;
+			
+		case "freeBoardContent" :
+			action = new FreeBoardContentAction();
+			break;
+			
+		case "freeBoardWriteProc" :
+			action = new FreeBoardWriteProcAction();
+			break;
+			
+		case "freeBoardUpdateProc" :
+			action = new FreeBoardUpdateProcAction();
+			break;
+			
+		case "freeBoardDeleteProc" :
+			action = new FreeBoardDeleteProcAction();
+			break;
+			
+		case "freeComment" :
+			action = new FreeCommentAction();
+			break;
+			
+		case "freeCommentDelete" :
+			action = new FreeCommentDeleteAction();
+			break;
+			
+		case "freeCommentUpdate" :
+			action = new FreeCommentUpdateAction();
+			break;
+			
+		case "freeCommentUpdateProc" :
+			action = new FreeCommentUpdateProcAction();
+			break;
+		
+		case "try1":
+			action = new RecoAction();
 			break;
 			
 		default:
