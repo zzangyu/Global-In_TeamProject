@@ -19,6 +19,7 @@
                 </ul>
             </div>
         </div>
+        
         <div class="rectangle">
             <div class="minibox">
             	<img src="images/한국.jpg" alt="korea" id="city1" class="photo">

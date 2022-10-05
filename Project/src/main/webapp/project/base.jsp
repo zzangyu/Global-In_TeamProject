@@ -35,13 +35,13 @@
         <div class="menu_wrap">
             <ul class="dep1">
                 <li>
-                    <span>추천플래너</span>
+                    <span><a href="cityPlan.do?cmd=try1">추천플래너</a></span>
                 </li>
                 <li>
                     <span>게시판</span>
                     <ul class="dep2">
-                        <li><a href="">공지사항</a></li>
-                        <li><a href="">자유게시판</a></li>
+                        <li><a href="cityPlan.do?cmd=boardList">공지사항</a></li>
+                        <li><a href="cityPlan.do?cmd=freeBoardList">자유게시판</a></li>
                         <li><a href="">동행게시판</a></li>
                         <li><a href="">루트소개</a></li>
                         <li><a href="">루트질문</a></li>
