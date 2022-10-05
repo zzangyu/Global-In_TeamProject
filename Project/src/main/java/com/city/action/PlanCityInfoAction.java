@@ -29,9 +29,9 @@ public class PlanCityInfoAction implements Action {
 		List<PlanCityInfoVO> arry = dao.getPlanInfo();
 		
 		request.setAttribute("name", name);
-		request.setAttribute("arry", arry);
+		request.setAttribute("arry", arry);  
 		request.setAttribute("check", check);
 		return new ActionForward("/project/planCityInfo.jsp");
 	}
-
+ 
 }
